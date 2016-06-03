@@ -6,8 +6,11 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link id="Link1" rel="shortcut icon" href="~/favicon.ico" type="image/x-icon" />
+    <link id="Link2" rel="icon" href="~/favicon.ico" type="image/ico" />
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
 </head>
-<body>
+<body ng-app="myApp">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -16,18 +19,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand" href="/Home"> <img src="~/icons/basket_shopping.png" width="24" height="24" style="display:inline-block" /> POS Wave</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+                    <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, null)</li>
+                    <li class="nav-item">@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
+        <br />
         @RenderBody()
+        <br />
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
@@ -36,6 +41,15 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/ui supporter/bootstrap.jquery.js"></script>
+    <script src="~/Scripts/ui supporter/button.bootstrap.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-animate/angular-animate.js"></script>
+    <script src="~/Scripts/angular-aria/angular-aria.js"></script>
+    <script src="~/Scripts/angular-messages.js"></script>
+    <script src="~/Scripts/angular-material/angular-material.js"></script>
+    <script src="~/Scripts/CustomAngular/app.js"></script>
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
