@@ -1,0 +1,73 @@
+﻿<html lang="en">
+<head>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var selectedJumbos = $("a.selectable-box");
+            console.log(selectedJumbos);
+            var originalColor = selectedJumbos.css("background-color");
+            selectedJumbos.hover(function (e) {
+                var randomClass = getRandomClass();
+                $(this).css("background-color", randomClass);
+            }, function (e) {
+                $(this).css('background-color', originalColor);
+            });
+        });
+
+
+        function getRandomClass() {
+            //Store available css classes
+            var classes = new Array("#1ace84", "#a262c0", "#ef8834", "#349bef", "#4ac0aa", "#8c78ba");
+            //Get a random number from 0 to 4
+            var randomNumber = Math.floor(Math.random() * classes.length);
+            return classes[randomNumber];
+        }
+
+
+        var pointerColor = 0;
+
+    </script>
+</head>
+<body>
+    <h2>Opciones de Administrador</h2>
+    <div class="workspace">
+
+        <div class="admin">
+            <div class="outer-center">
+                <div class="admin inner-center">
+                    <a class="selectable-box jumbotron well" href="otherindex.html">
+                        <h3 class="text-center">
+                            Administrar Sucursales
+                        </h3>
+                        <img class="administrator-icon" src="~/icons/sucursal.png" />
+                    </a>
+                    <a class="selectable-box jumbotron well" href="otherindex.html">
+                        <h3 class="text-center">
+                            Administrar Empleados
+                        </h3>
+                        <img class="administrator-icon" src="~/icons/employees.png" />
+
+                    </a>
+                    <a class="selectable-box jumbotron well" href="otherindex.html">
+
+                        <h3 class="text-center">
+                            Administrar Productos
+                        </h3>
+                        <img class="administrator-icon" src="~/icons/product.png" />
+                    </a>
+                    <a class="selectable-box jumbotron well" href="otherindex.html">
+
+                        <h3 class="text-center">
+                            Administrar Clientes
+                        </h3>
+                        <img class="administrator-icon" src="~/icons/client.png" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="clear" />
+</body>
+
+</html>

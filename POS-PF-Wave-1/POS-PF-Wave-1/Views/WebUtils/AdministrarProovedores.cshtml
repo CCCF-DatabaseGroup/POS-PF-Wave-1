@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "AdministrarProovedores";
+}
+
+<h2>Administrar Proovedores</h2>
+
+
+<form ng-controller="ctrl">
+    <h3>Datos del Proovedor</h3>
+
+    <div class="auxiliar_component center-block">
+        <div class="form-inline">
+            <label for="NombreProovedor">Nombre de proovedor: </label>
+            <input id="NombreProovedor" placeholder="Nombre de proovedor" class="form-control" type="text" />
+            <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+        </div>
+    </div>
+
+
+    <div class="auxiliar_component form-inline center-block">
+        <label for="NombreProovedorE">Nuevo nombre: </label>
+        <input ng-init="proovedor = ''" ng-readonly="proovedorE" ng-model="proovedor" id="NombreProovedorE" placeholder="Nuevo nombre del proovedor" class="form-control" type="text" />
+        <div class="btn-group">
+            <button ng-click="proovedorE = false" class="yes-no-btn yes btn btn-danger active">S&iacute;</button>
+            <button ng-click="proovedorE = true;proovedor = ''; " class="yes-no-btn no btn btn-danger">No</button>
+        </div>
+    </div>
+    <div class="auxiliar_component center-block">
+        <label for="TelProovedor">Telefono proovedor: </label>
+        <input id="TelProovedor" placeholder="Telefono del proovedor" class="form-control" type="text" />
+    </div>
+    <div class="auxiliar_component center-block">
+        <label for="DireccionProovedor">Direccion del proovedor: </label>
+        <input id="DireccionProovedor" placeholder="Direccion del proovedor" class="form-control" type="text" />
+    </div>
+
+    <div class="auxiliar_component center-block">
+        <div class="botones_administrador center-block">
+            <button class="btn btn-success boton" type="submit">
+                <span class="glyphicon glyphicon-erase"></span> Limpiar Busqueda
+            </button>
+            <button class="btn btn-primary boton" type="submit">
+                <span class="glyphicon glyphicon-cloud-upload"></span> Actualizar Empleado
+            </button>
+            <button class="btn btn-danger boton" type="submit">
+                <span class="glyphicon glyphicon-remove"></span> Eliminar Empleado
+            </button>
+        </div>
+    </div>
+
+
+
+</form>

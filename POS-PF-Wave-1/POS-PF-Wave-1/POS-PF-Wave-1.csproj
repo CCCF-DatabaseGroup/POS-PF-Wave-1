@@ -1131,6 +1131,16 @@
     <Content Include="Views\WebUtils\Logout.cshtml" />
     <Content Include="Views\WebUtils\Ventas.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\WebUtils\CrearSucursal.cshtml" />
+    <Content Include="Views\WebUtils\ManejoSucursal.cshtml" />
+    <Content Include="Views\WebUtils\AdministratorOptions.cshtml" />
+    <Content Include="Views\WebUtils\CrearEmpleado.cshtml" />
+    <Content Include="Views\WebUtils\ManejoEmpleado.cshtml" />
+    <Content Include="Views\WebUtils\CrearProovedor.cshtml" />
+    <Content Include="Views\WebUtils\AdministrarProovedores.cshtml" />
+    <Content Include="Views\WebUtils\CrearProducto.cshtml" />
+    <Content Include="Views\WebUtils\AdministrarProductos.cshtml" />
+    <Content Include="Views\WebUtils\AbastecerSucursal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

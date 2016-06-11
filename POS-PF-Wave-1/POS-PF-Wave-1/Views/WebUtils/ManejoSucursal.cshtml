@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Manejo Sucursal";
+}
+
+<h2>Ver/Actualizar/Borrar Sucursal</h2>
+
+<form>
+    <div class="auxiliar_component center-block">
+        <div class="form-inline">
+            <label for="NumeroSucursal">Numero de Sucursal: </label>
+            <input id="NumeroSucursal" placeholder="Numero de sucursal" class="form-control" type="number" min="1" value="1" />
+            <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+        </div>
+    </div>
+
+
+    <div class="auxiliar_component center-block">
+        <label for="NombreSucursal">Nombre: </label>
+        <input id="NombreSucursal" placeholder="Nombre de la sucursal" class="form-control" type="text" />
+    </div>
+
+    <div class="auxiliar_component center-block">
+        <label for="NumeroTelSucursal">Telefono: </label>
+        <input id="NumeroTelSucursal" placeholder="Numero de telefono, sucursal" class="form-control" type="number" min="1" value="1" />
+    </div>
+
+
+    <div class="auxiliar_component center-block">
+        <label for="CorreoSucursal">E-mail de Sucursal: </label>
+        <input id="CorreoSucursal" placeholder="E-mail de sucursal" class="form-control" type="text" />
+    </div>
+
+
+    <div class="auxiliar_component center-block">
+        <label for="ProvinciaSucursal">Provinicia de Sucursal: </label>
+        <select id="ProvinciaSucursal" placeholder="Provincia de sucursal" class="form-control" type="text"></select>
+    </div>
+
+
+    <div class="auxiliar_component center-block">
+        <label for="DistritoSucursal">Distrito de Sucursal: </label>
+        <select id="DistritoSucursal" placeholder="Distrito de sucursal" class="form-control" type="text"></select>
+    </div>
+
+
+
+    <div class="auxiliar_component center-block">
+        <label for="CantonSucursal">Cant&oacute;n de Sucursal: </label>
+        <select id="CantonSucursal" placeholder="Cantón de sucursal" class="form-control" type="text"></select>
+    </div>
+    <br />
+    <div class="auxiliar_component center-block">
+        <div class="botones_administrador center-block">
+            <button class="btn btn-success boton" type="submit">
+                <span class="glyphicon glyphicon-erase"></span> Limpiar Busqueda
+            </button>
+            <button class="btn btn-primary boton" type="submit">
+                <span class="glyphicon glyphicon-cloud-upload"></span> Actualizar Sucursal
+            </button>
+            <button class="btn btn-danger boton" type="submit">
+                <span class="glyphicon glyphicon-remove"></span> Eliminar Sucursal
+            </button>
+        </div>
+    </div>
+    
+
+
+</form>

@@ -1,4 +1,4 @@
-<div class="container" style="padding:0px;">
+<div id="welcome" class="container" style="padding:0px;" ng-controller="ctrl">
     <div class="col-md-8">
         <div class="jumbotron well">
             <div style="display:inline-block;">
@@ -25,7 +25,7 @@
                         <input ng-required="true" ng-model="usuarioLogin.NombreUsuario" class="login_component form-control center-block" placeholder="ingrese su nombre de usuario" id="Text1" type="text" />
                         <!--Este es el input donde se ingresa la contrasenia de usuario-->
                         <input ng-required="true" ng-model="usuarioLogin.Contrasena" type="password" class="login_component form-control center-block" placeholder="contraseña" id="Text1" />
-                        <div class="form-row login_component center-block">
+                        <div id="DineroRecibidoCaja" ng-hide="TipoUsuario == 2" class="form-row login_component center-block">
                             <div class="input-group">
                                 <span class="input-group-addon">&cent;</span>
                                 <input ng-required="true" ng-model="cajero.dineroInicial" type="number" class="form-control" placeholder="Dinero de la caja" id="dinero" />
@@ -38,15 +38,12 @@
         http://stackoverflow.com/questions/20870671/bootstrap-3-btn-group-lose-active-class-when-click-any-where-on-the-page
          -->
                             <div class="btn-group btn-group-justified login_component center-block">
-                                <a ng-click="usuarioLogin.TipoUsuario = Paciente" href="#" class="btn btn-primary active">Cajero</a>
-                                <a ng-click="usuarioLogin.TipoUsuario = Administrador" href="#" class="btn btn-primary">Administrador</a>
+                                <a ng-init="TipoUsuario = 1" ng-click="TipoUsuario = 1" href="#" class="btn btn-primary active">Cajero</a>
+                                <a ng-click="TipoUsuario = 2" href="#" class="btn btn-primary">Administrador</a>
                             </div>
 
                             <button ng-click="logeoUsuario.$valid && ingresar()" class="login_component btn btn-success center-block" id="Button1">Ingresar</button>
                             <p class="login_message">{{loginMessage}}</p>
-
-
-                            <a href="/Home/Registrarse" class="login_component btn btn-warning center-block" id="registro" type="button">Registrarse</a>
 </form>
                 </div>
             </div>

@@ -4,11 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link id="Link1" rel="shortcut icon" href="~/favicon.ico" type="image/x-icon" />
-    <link id="Link2" rel="icon" href="~/favicon.ico" type="image/ico" />
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <link id="Link1" rel="shortcut icon" href="~/faviconpos.ico" type="image/x-icon" />
+    <link id="Link2" rel="icon" href="~/faviconpos.ico" type="image/ico" />
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 </head>
 <body ng-app="myApp">
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -29,7 +31,7 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div>
         <br />
         @RenderBody()
         <br />
@@ -39,7 +41,7 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
+    
     @Scripts.Render("~/bundles/bootstrap")
     <script src="~/Scripts/ui supporter/bootstrap.jquery.js"></script>
     <script src="~/Scripts/ui supporter/button.bootstrap.js"></script>

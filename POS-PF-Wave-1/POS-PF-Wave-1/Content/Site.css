@@ -105,9 +105,11 @@ textarea {
 /*
     Se setea el color de la barra de navegacion
 */
-.navbar {
-        background-color: #5ba45b;
+.navbar-inverse {
+       background-color: #5ba45b;
+        border-color:#5ba45b;
 }
+
 
 /*
     Se setea el color del boton de colapso 
@@ -152,13 +154,6 @@ textarea {
 }
 
 
-/**
-    Se setea de color rojo claro la barra de navegacion de la pagina web
-*/
-.navbar-inverse{
-    border-style: hidden;
-    background-color: #5ba45b;
-}
 
 /**
     Define de un color claro el hiperenlace principal de la pagina 
@@ -454,17 +449,11 @@ a.list-group-item.active, a.list-group-item.active:hover{
     width: 100%;
 }
 
-@media (max-width: 361px) {
-    .botones_administrador {
-        width: 200px;
-    }
+.botones_administrador {
+    width:760px;
+}
 
-        .botones_administrador .boton {
-            width: 200px;
-            display: inline-block;
-            margin-bottom: 3px;
-            margin: 0px auto;
-        }
+@media (max-width: 361px) {
 
     .login_panel {
         width: 260px;
@@ -560,5 +549,160 @@ a.list-group-item.active, a.list-group-item.active:hover{
 }
 
 /*BugFix #1 END;*/
+
+
+/*
+    Administrator options
+*/
+
+
+.yes-no-btn.yes.btn.btn-danger.active{
+    background-color:#449d44;
+    border-color:#398439;
+    color:#fff;
+}
+
+.yes-no-btn.no.btn.btn-danger.active{
+    background-color:#be2a2a;
+    border-color:#ce2a2a;
+    color:#fff;
+}
+
+
+.yes-no-btn.yes.btn.btn-danger{
+    background-color:#ddd;
+    border-color:#ccc;
+    color:#333;
+}
+
+.yes-no-btn.no.btn.btn-danger{
+    background-color:#ddd;
+    border-color:#ccc;
+    color:#333;
+}
+
+
+.workspace{
+	width: 100%;
+    display:inline;
+}
+
+.workspace> .admin{
+    /* center the element */
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    /* give it dimensions */
+    min-height: 10em;
+    padding-top: 30px;
+    width: 100%;
+    
+}
+
+
+.admin> .jumbotron.well{
+	color: #333;
+	display: inline-block;
+	width: 300px;
+	background-color: #EAEAEA;
+	border: 3px solid;
+	border-color: #8cbf8c;
+    padding: 20px;
+}
+
+.administrator-icon{
+	display: block;
+	height: 250px;
+	width: 250px;
+	margin: 0 auto;
+}
+
+
+
+.outer-center {
+    float: right;
+    right: 50%;
+    position: relative;
+}
+.inner-center {
+    float: right;
+    right: -50%;
+    position: relative;
+}
+.clear {
+    clear: both;
+}
+
+
+.selectable-box.jumbotron.well{
+	transition: background-color 0.5s, color 0.5s;
+
+}
+
+.selectable-box.jumbotron.well:hover{
+
+	background-color: #519351;
+	color: #FFF;
+	
+}
+
+#welcome{
+    animation: TheWelcome 1s linear;
+}
+
+@keyframes TheWelcome{
+    from{
+        opacity:0;
+        margin-left: -1200px;
+    }
+    to{
+        opacity:1;
+        margin-left: 0px;
+    }
+}
+
+#DineroRecibidoCaja {
+  transition: all linear 0.3s;
+  position: relative;
+  height:40px;
+}
+
+#DineroRecibidoCaja.ng-hide {
+  height: 0;
+  opacity:0;
+}
+
+
+
+
+@media (max-width: 1213px) {
+.admin{
+	width: 909px;
+}
+
+@media (max-width: 910px) {
+    .admin {
+            width: 606px;
+    }
+}
+
+
+@media (max-width: 607px) {
+    .admin{
+	    width: 300px;
+    }
+    .botones_administrador {
+        width: 200px;
+    }
+
+    .botones_administrador .boton {
+            width: 200px;
+            display: inline-block;
+            margin-bottom: 3px;
+            margin: 0px auto;
+        }
+
+}
 
 

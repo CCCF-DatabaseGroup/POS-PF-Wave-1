@@ -4,7 +4,24 @@
     $scope.status = '  ';
     $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
 
-    $scope.productos = ['a', 'b', 'c', 'd', 'e', 'f'];
+    $scope.productos = [];
+
+    $scope.ProductId = "";
+
+    $scope.errorMessage = "";
+
+    $scope.addProduct = function () {
+        if ("" != $scope.ProductId){
+            $scope.productos.push({ ProductName: $scope.ProductId, ProductQuantity: 1 });
+            $scope.ProductId = "";
+            $scope.errorMessage = "";
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+        else {
+            $scope.errorMessage = "Error: Debe ingresar el codigo del producto";
+        }
+        
+    }
     
     $scope.showPrompt = function (ev,index) {
         // Appending dialog to document.body to cover sidenav in docs app

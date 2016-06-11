@@ -2,29 +2,58 @@
 @{
     ViewBag.Title = "Ventas";
 }
+<br />
+<div ng-controller="ctrl">
+    <form class="form-group center-block">
+        <button class="btn btn-success center-block" type="submit">
+            <span class="glyphicon glyphicon-user"></span> Registrar cliente
+        </button>
+        <br />
 
-<form class="form-group center-block">
-    <div class="form-inline center-block login_component center-block">
-        <input placeholder="Codigo del producto" class="form-control" type="text"/>
-        <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-plus"></span></button>
-    </div>
-    <div class="form-group center-block">
-        <h3>Lista de Productos</h3>
-        <ul class="list-group" ng-controller="ctrl" ng-cloak>
-            <li class="list-group-item" ng-repeat="producto in productos">
-                <div class="clearfix">
-                    <div class="fix-cell">
-                        <h4>El producto {{producto}}</h4>
-                    </div>
-                    <div class="fix-cell-right">
-                        <div class="pull-right">
-                            <input type="number" class="form-control" min="1" style="display:inline-block;width:70px;" />
-                            <a class="btn btn-danger" ng-click="showPrompt($event,$index)"><span class="glyphicon glyphicon-remove"></span></a>
+        <div class="form-inline center-block login_component center-block">
+            <input placeholder="Cedula del cliente" class="form-control" type="text" />
+            <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-ok-circle"></span></button>
+        </div>
+        <br />
+
+        <div class="form-inline center-block login_component center-block">
+            <b>Nombre: </b><br />
+            <b>Primer Apellido: </b><br />
+            <b>Segundo Apellido: </b><br />
+        </div>
+
+        <br />
+        <div class="form-group center-block">
+            <h3>Lista de Productos</h3>
+            <ul class="list-group" ng-cloak>
+                <li class="list-group-item" ng-repeat="producto in productos">
+                    <div class="clearfix">
+                        <div class="fix-cell">
+                            <h4>El producto {{producto.ProductName}}</h4>
                         </div>
-                        
+                        <div class="fix-cell-right">
+                            <div class="pull-right">
+                                <input ng-model="producto.ProductQuantity" type="number" class="form-control" min="1" style="display:inline-block;width:70px;" />
+                                <a class="btn btn-danger" ng-click="showPrompt($event,$index)"><span class="glyphicon glyphicon-remove"></span></a>
+                            </div>
+
+                        </div>
                     </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-</form>
+                </li>
+            </ul>
+        </div>
+    </form>
+
+    <form class="form-inline center-block login_component center-block">
+        <input ng-model="ProductId" placeholder="Codigo del producto" class="form-control" type="text" />
+        <button ng-click="addProduct()" class="btn btn-success" type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+        <div class="login_message">{{errorMessage}}</div>
+    </form>
+
+    <br />
+
+    <button class="btn btn-danger center-block" type="submit">
+        <span class="glyphicon glyphicon-user"></span> Facturar
+    </button>
+
+</div>

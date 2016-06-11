@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Crear Empleado";
+}
+
+<h2>Crear Empleado</h2>
+
+
+<form>
+
+    <!-- Datos del usuario del empleado -->
+
+    <h3>Crear usuario al empleado</h3>
+    <div class="auxiliar_component center-block">
+        <label for="NombreUsuarioEmpleado">Nombre de usuario: </label>
+        <input id="NombreUsuarioEmpleado" placeholder="Nombre del usuario del empleado" class="form-control" type="text" />
+    </div>
+
+    <div class="auxiliar_component center-block">
+        <label for="CorreoElectronico">Correo Electronico: </label>
+        <input id="CorreoElectronico" placeholder="Correo Electronico del empleado" class="form-control" type="text" />
+    </div>
+
+
+    <div class="auxiliar_component center-block">
+        <label for="Contrasena">Contrase&ntilde;a: </label>
+        <input id="Constrasena" placeholder="Constraseña del empleado" class="form-control" type="text" />
+    </div>
+
+
+    <!-- Datos del empleado-->
+
+    <h3>Datos del empleado</h3>
+
+    <div class="auxiliar_component center-block">
+        <div class="form-inline">
+            <label for="CedulaEmpleado">C&eacute;dula: </label>
+            <input id="CedulaEmpleado" placeholder="Numero de cedula empleado" class="form-control" type="number" min="1" value="1" />
+        </div>
+    </div>
+
+
+    <div class="auxiliar_component center-block">
+        <label for="NombreEmpleado">Nombre: </label>
+        <input id="NombreEmpleado" placeholder="Nombre del empleado" class="form-control" type="text" />
+    </div>
+    <div class="auxiliar_component center-block">
+        <label for="Apellido1Empleado">Primer Apellido: </label>
+        <input id="Apellido1Empleado" placeholder="Apellido del empleado" class="form-control" type="text" />
+    </div>
+    <div class="auxiliar_component center-block">
+        <label for="Apellido2Empleado">Segundo Apellido: </label>
+        <input id="Apellido2Empleado" placeholder="Segundo Apellido del empleado" class="form-control" type="text" />
+    </div>
+
+    <div class="auxiliar_component center-block">
+        <label for="NumeroTelEmpleado">Telefono: </label>
+        <input id="NumeroTelEmpleado" placeholder="Numero de telefono, empleado" class="form-control" type="number" min="1" value="1" />
+    </div>
+
+    <div class="auxiliar_component center-block">
+        <label for="FechaNacEmpleado">Telefono: </label>
+        <input id="FechaNacEmpleado" placeholder="Fecha nacimiento, empleado" class="form-control" type="date" />
+    </div>
+
+    <div class="auxiliar_component center-block">
+        <label for="SalarioEmpelado">Salario del empleado: </label>
+        <input id="SalarioEmpelado" placeholder="Salario del empleado" class="form-control" type="number" min="1" value="1" />
+    </div>
+
+
+    <div class="auxiliar_component center-block">
+        <label for="ProvinciaSucursal">Provinicia de Sucursal: </label>
+        <select id="ProvinciaSucursal" placeholder="Provincia de sucursal" class="form-control" type="text"></select>
+    </div>
+
+
+    <div class="auxiliar_component center-block">
+        <label for="NombreDeSucursal">Nombre de Sucursal: </label>
+        <select id="NombreDeSucursal" placeholder="Nombre de sucursal" class="form-control" type="text"></select>
+    </div>
+    <br />
+    <button class="btn btn-success center-block" type="submit">
+        <span class="glyphicon glyphicon-check"></span> Crear Empleado
+    </button>
+</form>

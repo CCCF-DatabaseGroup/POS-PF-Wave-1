@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Crear Producto";
+}
+
+<h2>Crear Producto</h2>
+
+
+<form>
+    <h3>Datos del Producto</h3>
+
+    <div class="auxiliar_component center-block">
+            <label for="NombreProducto">Nombre del producto: </label>
+            <input id="NombreProducto" placeholder="Nombre del producto" class="form-control" type="text" />
+    </div>
+
+    <div class="auxiliar_component center-block">
+        <label for="Proovedor">Proovedor: </label>
+        <select id="Proovedor" class="form-control">
+             
+        </select>
+    </div>
+    <div class="auxiliar_component center-block">
+        <label for="Ean">Codigo de Barras (Ean): </label>
+        <input id="Ean" placeholder="Ean" class="form-control" type="number" />
+    </div>
+
+    <div class="auxiliar_component center-block">
+            <label for="DescripcionProducto">Descripcion del producto: </label>
+            <input id="DescripcionProducto" placeholder="Descripcion del producto" class="form-control" type="text" />
+    </div>
+
+    <br />
+
+    <button class="btn btn-success center-block" type="submit">
+        <span class="glyphicon glyphicon-check"></span> Crear Producto
+    </button>
+
+</form>
+
