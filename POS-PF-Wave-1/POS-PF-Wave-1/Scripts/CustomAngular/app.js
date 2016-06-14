@@ -1,6 +1,22 @@
 ﻿angular.module('myApp', ['ngAnimate','ngMaterial', 'ngMessages'])
 
-.controller('ctrl', function ($scope, $mdDialog, $mdMedia) {
+.controller('ctrl', function ($scope, $http, $mdDialog, $mdMedia) {
+    $scope.showSucursals = function () {
+        console.log('sucursals is called');
+        $http.get('/Administrador/READSucursales')
+        .success(function (result) {
+            console.log(result);
+            $scope.sucursals = result;
+        })
+        .error(function (data) {
+            console.log(data);
+        });
+        
+    }
+
+
+
+
     $scope.status = '  ';
     $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
 

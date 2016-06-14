@@ -1214,10 +1214,10 @@
     <Content Include="Views\WebUtils\CrearProducto.cshtml" />
     <Content Include="Views\WebUtils\AdministrarProductos.cshtml" />
     <Content Include="Views\WebUtils\AbastecerSucursal.cshtml" />
+    <Content Include="Views\Administrador\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Administrador\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -1241,7 +1241,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51191</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
