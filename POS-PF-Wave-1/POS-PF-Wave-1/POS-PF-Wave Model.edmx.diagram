@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="da173511928e425b8cf304664075dd78" Name="Diagram1">
+        <EntityTypeShape EntityType="POS_PFModel.CAJA" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="POS_PFModel.CAJEROS" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="POS_PFModel.FACTURA" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="POS_PFModel.FARMACIA" Width="1.5" PointX="1.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="POS_PFModel.PERSONA" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="POS_PFModel.PRODUCTO" Width="1.5" PointX="7.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="POS_PFModel.PROVEEDOR" Width="1.5" PointX="5.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="POS_PFModel.RANGO_USUARIO" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="POS_PFModel.SUCURSAL" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="POS_PFModel.USUARIO" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POS_PFModel.DETALLES_FACTURA" Width="1.5" PointX="9.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="POS_PFModel.PRODUCTOS_SUCURSAL" Width="1.5" PointX="9.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="POS_PFModel.TRABAJA_EN" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="POS_PFModel.FK_Id_caja_cajeros" ManuallyRouted="false" />
+        <AssociationConnector Association="POS_PFModel.FK_Id_sucursal_caja" ManuallyRouted="false" />
+        <AssociationConnector Association="POS_PFModel.FK_Id_cajero" ManuallyRouted="false" />
+        <AssociationConnector Association="POS_PFModel.FK_Id_sesion_caja_factura" ManuallyRouted="false" />
+        <AssociationConnector Association="POS_PFModel.FK_Cedula_cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="POS_PFModel.FK_Id_factura_DF" ManuallyRouted="false" />
+        <AssociationConnector Association="POS_PFModel.FK_Id_farmacia_sucursal" ManuallyRouted="false" />
+        <AssociationConnector Association="POS_PFModel.FK_Id_farmacia_trabaja" ManuallyRouted="false" />
+        <AssociationConnector Association="POS_PFModel.FK_Id_usuario_persona" ManuallyRouted="false" />
+        <AssociationConnector Association="POS_PFModel.FK_Id_producto_DF" ManuallyRouted="false" />
+        <AssociationConnector Association="POS_PFModel.FK_Id_producto_PS" ManuallyRouted="false" />
+        <AssociationConnector Association="POS_PFModel.FK_Id_proveedor_producto" ManuallyRouted="false" />
+        <AssociationConnector Association="POS_PFModel.FK_Id_sucursal_PS" ManuallyRouted="false" />
+        <AssociationConnector Association="POS_PFModel.FK_Id_usuario_trabaja" ManuallyRouted="false" />
+        <AssociationConnector Association="POS_PFModel.TIPO_USUARIO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

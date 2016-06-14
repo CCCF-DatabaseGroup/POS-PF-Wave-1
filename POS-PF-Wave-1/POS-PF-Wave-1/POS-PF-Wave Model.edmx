@@ -1,0 +1,1050 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="POS_PFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CAJA">
+          <Key>
+            <PropertyRef Name="Id_caja" />
+          </Key>
+          <Property Name="Id_caja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_sucursal_caja" Type="int" Nullable="false" />
+          <Property Name="Nombre_caja" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CAJEROS">
+          <Key>
+            <PropertyRef Name="Id_sesion_caja" />
+          </Key>
+          <Property Name="Id_sesion_caja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_caja_cajeros" Type="int" Nullable="false" />
+          <Property Name="Id_cajero" Type="int" Nullable="false" />
+          <Property Name="Fecha_apertura" Type="datetime" Nullable="false" />
+          <Property Name="Cantidad_apertura" Type="int" Nullable="false" />
+          <Property Name="Fecha_clausura" Type="datetime" />
+          <Property Name="Cantidad_clausura" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'POS_PF.dbo.DETALLES_FACTURA' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="DETALLES_FACTURA">
+          <Key>
+            <PropertyRef Name="Id_factura_DF" />
+            <PropertyRef Name="Id_detalle_DF" />
+            <PropertyRef Name="Id_producto_DF" />
+            <PropertyRef Name="Cantidad_compra" />
+            <PropertyRef Name="Precio_factura" />
+          </Key>
+          <Property Name="Id_factura_DF" Type="int" Nullable="false" />
+          <Property Name="Id_detalle_DF" Type="int" Nullable="false" />
+          <Property Name="Id_producto_DF" Type="int" Nullable="false" />
+          <Property Name="Cantidad_compra" Type="int" Nullable="false" />
+          <Property Name="Precio_factura" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FACTURA">
+          <Key>
+            <PropertyRef Name="Id_factura" />
+          </Key>
+          <Property Name="Id_factura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_sesion_caja_factura" Type="int" Nullable="false" />
+          <Property Name="Cedula_cliente" Type="int" Nullable="false" />
+          <Property Name="Fecha_factura" Type="date" Nullable="false" />
+          <Property Name="Hora_apertura" Type="time" Precision="0" Nullable="false" />
+          <Property Name="Hora_clausura" Type="time" Precision="0" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="FARMACIA">
+          <Key>
+            <PropertyRef Name="Id_farmacia" />
+          </Key>
+          <Property Name="Id_farmacia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_farmacia" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Correo_electronico" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PERSONA">
+          <Key>
+            <PropertyRef Name="Cedula" />
+          </Key>
+          <Property Name="Cedula" Type="int" Nullable="false" />
+          <Property Name="Id_usuario_persona" Type="int" />
+          <Property Name="Apellido1" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Apellido2" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nombre_persona" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Fecha_nacimiento" Type="date" />
+          <Property Name="Telefono_persona" Type="int" />
+          <Property Name="Direccion_persona" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="Id_producto" />
+          </Key>
+          <Property Name="Id_producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_producto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Id_proveedor_producto" Type="int" Nullable="false" />
+          <Property Name="EAN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'POS_PF.dbo.PRODUCTOS_SUCURSAL' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="PRODUCTOS_SUCURSAL">
+          <Key>
+            <PropertyRef Name="Id_sucursal_PS" />
+            <PropertyRef Name="Id_producto_PS" />
+            <PropertyRef Name="Cantidad_bodega" />
+            <PropertyRef Name="Cantidad_promedio" />
+            <PropertyRef Name="Precio_sucursal" />
+          </Key>
+          <Property Name="Id_sucursal_PS" Type="int" Nullable="false" />
+          <Property Name="Id_producto_PS" Type="int" Nullable="false" />
+          <Property Name="Cantidad_bodega" Type="int" Nullable="false" />
+          <Property Name="Cantidad_promedio" Type="int" Nullable="false" />
+          <Property Name="Precio_sucursal" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROVEEDOR">
+          <Key>
+            <PropertyRef Name="Id_proveedor" />
+          </Key>
+          <Property Name="Id_proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_proveedor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono_proveedor" Type="int" Nullable="false" />
+          <Property Name="Direccion_proveedor" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="RANGO_USUARIO">
+          <Key>
+            <PropertyRef Name="Id_rango" />
+          </Key>
+          <Property Name="Id_rango" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_rango" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SUCURSAL">
+          <Key>
+            <PropertyRef Name="Id_sucursal" />
+          </Key>
+          <Property Name="Id_sucursal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_farmacia_sucursal" Type="int" Nullable="false" />
+          <Property Name="Nombre_sucursal" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Telefono_sucursal" Type="int" Nullable="false" />
+          <Property Name="Direccion_sucursal" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'POS_PF.dbo.TIPO_USUARIO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="TIPO_USUARIO">
+          <Key>
+            <PropertyRef Name="Id_usuario_TU" />
+            <PropertyRef Name="Id_rango_TU" />
+          </Key>
+          <Property Name="Id_usuario_TU" Type="int" Nullable="false" />
+          <Property Name="Id_rango_TU" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'POS_PF.dbo.TRABAJA_EN' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="TRABAJA_EN">
+          <Key>
+            <PropertyRef Name="Id_usuario_trabaja" />
+            <PropertyRef Name="Id_farmacia_trabaja" />
+            <PropertyRef Name="Salario" />
+          </Key>
+          <Property Name="Id_usuario_trabaja" Type="int" Nullable="false" />
+          <Property Name="Id_farmacia_trabaja" Type="int" Nullable="false" />
+          <Property Name="Salario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="Id_usuario" />
+          </Key>
+          <Property Name="Id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nickname" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Contrasena" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Cedula_cliente">
+          <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONA">
+              <PropertyRef Name="Cedula" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="Cedula_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_caja_cajeros">
+          <End Role="CAJA" Type="Self.CAJA" Multiplicity="1" />
+          <End Role="CAJEROS" Type="Self.CAJEROS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAJA">
+              <PropertyRef Name="Id_caja" />
+            </Principal>
+            <Dependent Role="CAJEROS">
+              <PropertyRef Name="Id_caja_cajeros" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_cajero">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="CAJEROS" Type="Self.CAJEROS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="Id_usuario" />
+            </Principal>
+            <Dependent Role="CAJEROS">
+              <PropertyRef Name="Id_cajero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_factura_DF">
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="1" />
+          <End Role="DETALLES_FACTURA" Type="Self.DETALLES_FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACTURA">
+              <PropertyRef Name="Id_factura" />
+            </Principal>
+            <Dependent Role="DETALLES_FACTURA">
+              <PropertyRef Name="Id_factura_DF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_farmacia_sucursal">
+          <End Role="FARMACIA" Type="Self.FARMACIA" Multiplicity="1" />
+          <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FARMACIA">
+              <PropertyRef Name="Id_farmacia" />
+            </Principal>
+            <Dependent Role="SUCURSAL">
+              <PropertyRef Name="Id_farmacia_sucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_farmacia_trabaja">
+          <End Role="FARMACIA" Type="Self.FARMACIA" Multiplicity="1" />
+          <End Role="TRABAJA_EN" Type="Self.TRABAJA_EN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FARMACIA">
+              <PropertyRef Name="Id_farmacia" />
+            </Principal>
+            <Dependent Role="TRABAJA_EN">
+              <PropertyRef Name="Id_farmacia_trabaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_producto_DF">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="DETALLES_FACTURA" Type="Self.DETALLES_FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="Id_producto" />
+            </Principal>
+            <Dependent Role="DETALLES_FACTURA">
+              <PropertyRef Name="Id_producto_DF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_producto_PS">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="PRODUCTOS_SUCURSAL" Type="Self.PRODUCTOS_SUCURSAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="Id_producto" />
+            </Principal>
+            <Dependent Role="PRODUCTOS_SUCURSAL">
+              <PropertyRef Name="Id_producto_PS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_proveedor_producto">
+          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDOR">
+              <PropertyRef Name="Id_proveedor" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="Id_proveedor_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_rango_TU">
+          <End Role="RANGO_USUARIO" Type="Self.RANGO_USUARIO" Multiplicity="1" />
+          <End Role="TIPO_USUARIO" Type="Self.TIPO_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RANGO_USUARIO">
+              <PropertyRef Name="Id_rango" />
+            </Principal>
+            <Dependent Role="TIPO_USUARIO">
+              <PropertyRef Name="Id_rango_TU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_sesion_caja_factura">
+          <End Role="CAJEROS" Type="Self.CAJEROS" Multiplicity="1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAJEROS">
+              <PropertyRef Name="Id_sesion_caja" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="Id_sesion_caja_factura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_sucursal_caja">
+          <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="1" />
+          <End Role="CAJA" Type="Self.CAJA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUCURSAL">
+              <PropertyRef Name="Id_sucursal" />
+            </Principal>
+            <Dependent Role="CAJA">
+              <PropertyRef Name="Id_sucursal_caja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_sucursal_PS">
+          <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="1" />
+          <End Role="PRODUCTOS_SUCURSAL" Type="Self.PRODUCTOS_SUCURSAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUCURSAL">
+              <PropertyRef Name="Id_sucursal" />
+            </Principal>
+            <Dependent Role="PRODUCTOS_SUCURSAL">
+              <PropertyRef Name="Id_sucursal_PS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_usuario_persona">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="Id_usuario" />
+            </Principal>
+            <Dependent Role="PERSONA">
+              <PropertyRef Name="Id_usuario_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_usuario_trabaja">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="TRABAJA_EN" Type="Self.TRABAJA_EN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="Id_usuario" />
+            </Principal>
+            <Dependent Role="TRABAJA_EN">
+              <PropertyRef Name="Id_usuario_trabaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_usuario_TU">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="TIPO_USUARIO" Type="Self.TIPO_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="Id_usuario" />
+            </Principal>
+            <Dependent Role="TIPO_USUARIO">
+              <PropertyRef Name="Id_usuario_TU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="POS_PFModelStoreContainer">
+          <EntitySet Name="CAJA" EntityType="Self.CAJA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAJEROS" EntityType="Self.CAJEROS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FACTURA" EntityType="Self.FACTURA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FARMACIA" EntityType="Self.FARMACIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERSONA" EntityType="Self.PERSONA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RANGO_USUARIO" EntityType="Self.RANGO_USUARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SUCURSAL" EntityType="Self.SUCURSAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DETALLES_FACTURA" EntityType="Self.DETALLES_FACTURA" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DETALLES_FACTURA].[Id_factura_DF] AS [Id_factura_DF], 
+    [DETALLES_FACTURA].[Id_detalle_DF] AS [Id_detalle_DF], 
+    [DETALLES_FACTURA].[Id_producto_DF] AS [Id_producto_DF], 
+    [DETALLES_FACTURA].[Cantidad_compra] AS [Cantidad_compra], 
+    [DETALLES_FACTURA].[Precio_factura] AS [Precio_factura]
+    FROM [dbo].[DETALLES_FACTURA] AS [DETALLES_FACTURA]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PRODUCTOS_SUCURSAL" EntityType="Self.PRODUCTOS_SUCURSAL" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PRODUCTOS_SUCURSAL].[Id_sucursal_PS] AS [Id_sucursal_PS], 
+    [PRODUCTOS_SUCURSAL].[Id_producto_PS] AS [Id_producto_PS], 
+    [PRODUCTOS_SUCURSAL].[Cantidad_bodega] AS [Cantidad_bodega], 
+    [PRODUCTOS_SUCURSAL].[Cantidad_promedio] AS [Cantidad_promedio], 
+    [PRODUCTOS_SUCURSAL].[Precio_sucursal] AS [Precio_sucursal]
+    FROM [dbo].[PRODUCTOS_SUCURSAL] AS [PRODUCTOS_SUCURSAL]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TIPO_USUARIO" EntityType="Self.TIPO_USUARIO" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TIPO_USUARIO].[Id_usuario_TU] AS [Id_usuario_TU], 
+    [TIPO_USUARIO].[Id_rango_TU] AS [Id_rango_TU]
+    FROM [dbo].[TIPO_USUARIO] AS [TIPO_USUARIO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TRABAJA_EN" EntityType="Self.TRABAJA_EN" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TRABAJA_EN].[Id_usuario_trabaja] AS [Id_usuario_trabaja], 
+    [TRABAJA_EN].[Id_farmacia_trabaja] AS [Id_farmacia_trabaja], 
+    [TRABAJA_EN].[Salario] AS [Salario]
+    FROM [dbo].[TRABAJA_EN] AS [TRABAJA_EN]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Cedula_cliente" Association="Self.FK_Cedula_cliente">
+            <End Role="PERSONA" EntitySet="PERSONA" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_caja_cajeros" Association="Self.FK_Id_caja_cajeros">
+            <End Role="CAJA" EntitySet="CAJA" />
+            <End Role="CAJEROS" EntitySet="CAJEROS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_cajero" Association="Self.FK_Id_cajero">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="CAJEROS" EntitySet="CAJEROS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_factura_DF" Association="Self.FK_Id_factura_DF">
+            <End Role="FACTURA" EntitySet="FACTURA" />
+            <End Role="DETALLES_FACTURA" EntitySet="DETALLES_FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_farmacia_sucursal" Association="Self.FK_Id_farmacia_sucursal">
+            <End Role="FARMACIA" EntitySet="FARMACIA" />
+            <End Role="SUCURSAL" EntitySet="SUCURSAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_farmacia_trabaja" Association="Self.FK_Id_farmacia_trabaja">
+            <End Role="FARMACIA" EntitySet="FARMACIA" />
+            <End Role="TRABAJA_EN" EntitySet="TRABAJA_EN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_producto_DF" Association="Self.FK_Id_producto_DF">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="DETALLES_FACTURA" EntitySet="DETALLES_FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_producto_PS" Association="Self.FK_Id_producto_PS">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="PRODUCTOS_SUCURSAL" EntitySet="PRODUCTOS_SUCURSAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_proveedor_producto" Association="Self.FK_Id_proveedor_producto">
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_rango_TU" Association="Self.FK_Id_rango_TU">
+            <End Role="RANGO_USUARIO" EntitySet="RANGO_USUARIO" />
+            <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_sesion_caja_factura" Association="Self.FK_Id_sesion_caja_factura">
+            <End Role="CAJEROS" EntitySet="CAJEROS" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_sucursal_caja" Association="Self.FK_Id_sucursal_caja">
+            <End Role="SUCURSAL" EntitySet="SUCURSAL" />
+            <End Role="CAJA" EntitySet="CAJA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_sucursal_PS" Association="Self.FK_Id_sucursal_PS">
+            <End Role="SUCURSAL" EntitySet="SUCURSAL" />
+            <End Role="PRODUCTOS_SUCURSAL" EntitySet="PRODUCTOS_SUCURSAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_usuario_persona" Association="Self.FK_Id_usuario_persona">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="PERSONA" EntitySet="PERSONA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_usuario_trabaja" Association="Self.FK_Id_usuario_trabaja">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="TRABAJA_EN" EntitySet="TRABAJA_EN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_usuario_TU" Association="Self.FK_Id_usuario_TU">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="POS_PFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CAJA">
+          <Key>
+            <PropertyRef Name="Id_caja" />
+          </Key>
+          <Property Name="Id_caja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_sucursal_caja" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_caja" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CAJEROS" Relationship="Self.FK_Id_caja_cajeros" FromRole="CAJA" ToRole="CAJEROS" />
+          <NavigationProperty Name="SUCURSAL" Relationship="Self.FK_Id_sucursal_caja" FromRole="CAJA" ToRole="SUCURSAL" />
+        </EntityType>
+        <EntityType Name="CAJEROS">
+          <Key>
+            <PropertyRef Name="Id_sesion_caja" />
+          </Key>
+          <Property Name="Id_sesion_caja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_caja_cajeros" Type="Int32" Nullable="false" />
+          <Property Name="Id_cajero" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_apertura" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Cantidad_apertura" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_clausura" Type="DateTime" Precision="3" />
+          <Property Name="Cantidad_clausura" Type="Int32" />
+          <NavigationProperty Name="CAJA" Relationship="Self.FK_Id_caja_cajeros" FromRole="CAJEROS" ToRole="CAJA" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK_Id_cajero" FromRole="CAJEROS" ToRole="USUARIO" />
+          <NavigationProperty Name="FACTURA" Relationship="Self.FK_Id_sesion_caja_factura" FromRole="CAJEROS" ToRole="FACTURA" />
+        </EntityType>
+        <EntityType Name="FACTURA">
+          <Key>
+            <PropertyRef Name="Id_factura" />
+          </Key>
+          <Property Name="Id_factura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_sesion_caja_factura" Type="Int32" Nullable="false" />
+          <Property Name="Cedula_cliente" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_factura" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hora_apertura" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="Hora_clausura" Type="Time" Precision="0" />
+          <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CAJEROS" Relationship="Self.FK_Id_sesion_caja_factura" FromRole="FACTURA" ToRole="CAJEROS" />
+          <NavigationProperty Name="PERSONA" Relationship="Self.FK_Cedula_cliente" FromRole="FACTURA" ToRole="PERSONA" />
+          <NavigationProperty Name="DETALLES_FACTURA" Relationship="Self.FK_Id_factura_DF" FromRole="FACTURA" ToRole="DETALLES_FACTURA" />
+        </EntityType>
+        <EntityType Name="FARMACIA">
+          <Key>
+            <PropertyRef Name="Id_farmacia" />
+          </Key>
+          <Property Name="Id_farmacia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_farmacia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo_electronico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SUCURSAL" Relationship="Self.FK_Id_farmacia_sucursal" FromRole="FARMACIA" ToRole="SUCURSAL" />
+          <NavigationProperty Name="TRABAJA_EN" Relationship="Self.FK_Id_farmacia_trabaja" FromRole="FARMACIA" ToRole="TRABAJA_EN" />
+        </EntityType>
+        <EntityType Name="PERSONA">
+          <Key>
+            <PropertyRef Name="Cedula" />
+          </Key>
+          <Property Name="Cedula" Type="Int32" Nullable="false" />
+          <Property Name="Id_usuario_persona" Type="Int32" />
+          <Property Name="Apellido1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre_persona" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_nacimiento" Type="DateTime" Precision="0" />
+          <Property Name="Telefono_persona" Type="Int32" />
+          <Property Name="Direccion_persona" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FACTURA" Relationship="Self.FK_Cedula_cliente" FromRole="PERSONA" ToRole="FACTURA" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK_Id_usuario_persona" FromRole="PERSONA" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="Id_producto" />
+          </Key>
+          <Property Name="Id_producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_producto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_proveedor_producto" Type="Int32" Nullable="false" />
+          <Property Name="EAN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DETALLES_FACTURA" Relationship="Self.FK_Id_producto_DF" FromRole="PRODUCTO" ToRole="DETALLES_FACTURA" />
+          <NavigationProperty Name="PRODUCTOS_SUCURSAL" Relationship="Self.FK_Id_producto_PS" FromRole="PRODUCTO" ToRole="PRODUCTOS_SUCURSAL" />
+          <NavigationProperty Name="PROVEEDOR" Relationship="Self.FK_Id_proveedor_producto" FromRole="PRODUCTO" ToRole="PROVEEDOR" />
+        </EntityType>
+        <EntityType Name="PROVEEDOR">
+          <Key>
+            <PropertyRef Name="Id_proveedor" />
+          </Key>
+          <Property Name="Id_proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_proveedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono_proveedor" Type="Int32" Nullable="false" />
+          <Property Name="Direccion_proveedor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_Id_proveedor_producto" FromRole="PROVEEDOR" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="RANGO_USUARIO">
+          <Key>
+            <PropertyRef Name="Id_rango" />
+          </Key>
+          <Property Name="Id_rango" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_rango" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.TIPO_USUARIO" FromRole="RANGO_USUARIO" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="SUCURSAL">
+          <Key>
+            <PropertyRef Name="Id_sucursal" />
+          </Key>
+          <Property Name="Id_sucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_farmacia_sucursal" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_sucursal" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono_sucursal" Type="Int32" Nullable="false" />
+          <Property Name="Direccion_sucursal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CAJA" Relationship="Self.FK_Id_sucursal_caja" FromRole="SUCURSAL" ToRole="CAJA" />
+          <NavigationProperty Name="FARMACIA" Relationship="Self.FK_Id_farmacia_sucursal" FromRole="SUCURSAL" ToRole="FARMACIA" />
+          <NavigationProperty Name="PRODUCTOS_SUCURSAL" Relationship="Self.FK_Id_sucursal_PS" FromRole="SUCURSAL" ToRole="PRODUCTOS_SUCURSAL" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="Id_usuario" />
+          </Key>
+          <Property Name="Id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nickname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CAJEROS" Relationship="Self.FK_Id_cajero" FromRole="USUARIO" ToRole="CAJEROS" />
+          <NavigationProperty Name="PERSONA" Relationship="Self.FK_Id_usuario_persona" FromRole="USUARIO" ToRole="PERSONA" />
+          <NavigationProperty Name="TRABAJA_EN" Relationship="Self.FK_Id_usuario_trabaja" FromRole="USUARIO" ToRole="TRABAJA_EN" />
+          <NavigationProperty Name="RANGO_USUARIO" Relationship="Self.TIPO_USUARIO" FromRole="USUARIO" ToRole="RANGO_USUARIO" />
+        </EntityType>
+        <EntityType Name="DETALLES_FACTURA">
+          <Key>
+            <PropertyRef Name="Id_factura_DF" />
+            <PropertyRef Name="Id_detalle_DF" />
+            <PropertyRef Name="Id_producto_DF" />
+            <PropertyRef Name="Cantidad_compra" />
+            <PropertyRef Name="Precio_factura" />
+          </Key>
+          <Property Name="Id_factura_DF" Type="Int32" Nullable="false" />
+          <Property Name="Id_detalle_DF" Type="Int32" Nullable="false" />
+          <Property Name="Id_producto_DF" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad_compra" Type="Int32" Nullable="false" />
+          <Property Name="Precio_factura" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <NavigationProperty Name="FACTURA" Relationship="Self.FK_Id_factura_DF" FromRole="DETALLES_FACTURA" ToRole="FACTURA" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_Id_producto_DF" FromRole="DETALLES_FACTURA" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="PRODUCTOS_SUCURSAL">
+          <Key>
+            <PropertyRef Name="Id_sucursal_PS" />
+            <PropertyRef Name="Id_producto_PS" />
+            <PropertyRef Name="Cantidad_bodega" />
+            <PropertyRef Name="Cantidad_promedio" />
+            <PropertyRef Name="Precio_sucursal" />
+          </Key>
+          <Property Name="Id_sucursal_PS" Type="Int32" Nullable="false" />
+          <Property Name="Id_producto_PS" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad_bodega" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad_promedio" Type="Int32" Nullable="false" />
+          <Property Name="Precio_sucursal" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_Id_producto_PS" FromRole="PRODUCTOS_SUCURSAL" ToRole="PRODUCTO" />
+          <NavigationProperty Name="SUCURSAL" Relationship="Self.FK_Id_sucursal_PS" FromRole="PRODUCTOS_SUCURSAL" ToRole="SUCURSAL" />
+        </EntityType>
+        <EntityType Name="TRABAJA_EN">
+          <Key>
+            <PropertyRef Name="Id_usuario_trabaja" />
+            <PropertyRef Name="Id_farmacia_trabaja" />
+            <PropertyRef Name="Salario" />
+          </Key>
+          <Property Name="Id_usuario_trabaja" Type="Int32" Nullable="false" />
+          <Property Name="Id_farmacia_trabaja" Type="Int32" Nullable="false" />
+          <Property Name="Salario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FARMACIA" Relationship="Self.FK_Id_farmacia_trabaja" FromRole="TRABAJA_EN" ToRole="FARMACIA" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK_Id_usuario_trabaja" FromRole="TRABAJA_EN" ToRole="USUARIO" />
+        </EntityType>
+        <Association Name="FK_Id_caja_cajeros">
+          <End Role="CAJA" Type="Self.CAJA" Multiplicity="1" />
+          <End Role="CAJEROS" Type="Self.CAJEROS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAJA">
+              <PropertyRef Name="Id_caja" />
+            </Principal>
+            <Dependent Role="CAJEROS">
+              <PropertyRef Name="Id_caja_cajeros" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_sucursal_caja">
+          <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="1" />
+          <End Role="CAJA" Type="Self.CAJA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUCURSAL">
+              <PropertyRef Name="Id_sucursal" />
+            </Principal>
+            <Dependent Role="CAJA">
+              <PropertyRef Name="Id_sucursal_caja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_cajero">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="CAJEROS" Type="Self.CAJEROS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="Id_usuario" />
+            </Principal>
+            <Dependent Role="CAJEROS">
+              <PropertyRef Name="Id_cajero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_sesion_caja_factura">
+          <End Role="CAJEROS" Type="Self.CAJEROS" Multiplicity="1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAJEROS">
+              <PropertyRef Name="Id_sesion_caja" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="Id_sesion_caja_factura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cedula_cliente">
+          <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONA">
+              <PropertyRef Name="Cedula" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="Cedula_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_factura_DF">
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="1" />
+          <End Role="DETALLES_FACTURA" Type="Self.DETALLES_FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACTURA">
+              <PropertyRef Name="Id_factura" />
+            </Principal>
+            <Dependent Role="DETALLES_FACTURA">
+              <PropertyRef Name="Id_factura_DF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_farmacia_sucursal">
+          <End Role="FARMACIA" Type="Self.FARMACIA" Multiplicity="1" />
+          <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FARMACIA">
+              <PropertyRef Name="Id_farmacia" />
+            </Principal>
+            <Dependent Role="SUCURSAL">
+              <PropertyRef Name="Id_farmacia_sucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_farmacia_trabaja">
+          <End Role="FARMACIA" Type="Self.FARMACIA" Multiplicity="1" />
+          <End Role="TRABAJA_EN" Type="Self.TRABAJA_EN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FARMACIA">
+              <PropertyRef Name="Id_farmacia" />
+            </Principal>
+            <Dependent Role="TRABAJA_EN">
+              <PropertyRef Name="Id_farmacia_trabaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_usuario_persona">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="Id_usuario" />
+            </Principal>
+            <Dependent Role="PERSONA">
+              <PropertyRef Name="Id_usuario_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_producto_DF">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="DETALLES_FACTURA" Type="Self.DETALLES_FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="Id_producto" />
+            </Principal>
+            <Dependent Role="DETALLES_FACTURA">
+              <PropertyRef Name="Id_producto_DF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_producto_PS">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="PRODUCTOS_SUCURSAL" Type="Self.PRODUCTOS_SUCURSAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="Id_producto" />
+            </Principal>
+            <Dependent Role="PRODUCTOS_SUCURSAL">
+              <PropertyRef Name="Id_producto_PS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_proveedor_producto">
+          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDOR">
+              <PropertyRef Name="Id_proveedor" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="Id_proveedor_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_sucursal_PS">
+          <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="1" />
+          <End Role="PRODUCTOS_SUCURSAL" Type="Self.PRODUCTOS_SUCURSAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUCURSAL">
+              <PropertyRef Name="Id_sucursal" />
+            </Principal>
+            <Dependent Role="PRODUCTOS_SUCURSAL">
+              <PropertyRef Name="Id_sucursal_PS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Id_usuario_trabaja">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="TRABAJA_EN" Type="Self.TRABAJA_EN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="Id_usuario" />
+            </Principal>
+            <Dependent Role="TRABAJA_EN">
+              <PropertyRef Name="Id_usuario_trabaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TIPO_USUARIO">
+          <End Role="RANGO_USUARIO" Type="Self.RANGO_USUARIO" Multiplicity="*" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="POS_PFEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CAJA" EntityType="Self.CAJA" />
+          <EntitySet Name="CAJEROS" EntityType="Self.CAJEROS" />
+          <EntitySet Name="FACTURA" EntityType="Self.FACTURA" />
+          <EntitySet Name="FARMACIA" EntityType="Self.FARMACIA" />
+          <EntitySet Name="PERSONA" EntityType="Self.PERSONA" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
+          <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" />
+          <EntitySet Name="RANGO_USUARIO" EntityType="Self.RANGO_USUARIO" />
+          <EntitySet Name="SUCURSAL" EntityType="Self.SUCURSAL" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+          <EntitySet Name="DETALLES_FACTURA" EntityType="Self.DETALLES_FACTURA" />
+          <EntitySet Name="PRODUCTOS_SUCURSAL" EntityType="Self.PRODUCTOS_SUCURSAL" />
+          <EntitySet Name="TRABAJA_EN" EntityType="Self.TRABAJA_EN" />
+          <AssociationSet Name="FK_Id_caja_cajeros" Association="Self.FK_Id_caja_cajeros">
+            <End Role="CAJA" EntitySet="CAJA" />
+            <End Role="CAJEROS" EntitySet="CAJEROS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_sucursal_caja" Association="Self.FK_Id_sucursal_caja">
+            <End Role="SUCURSAL" EntitySet="SUCURSAL" />
+            <End Role="CAJA" EntitySet="CAJA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_cajero" Association="Self.FK_Id_cajero">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="CAJEROS" EntitySet="CAJEROS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_sesion_caja_factura" Association="Self.FK_Id_sesion_caja_factura">
+            <End Role="CAJEROS" EntitySet="CAJEROS" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cedula_cliente" Association="Self.FK_Cedula_cliente">
+            <End Role="PERSONA" EntitySet="PERSONA" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_factura_DF" Association="Self.FK_Id_factura_DF">
+            <End Role="FACTURA" EntitySet="FACTURA" />
+            <End Role="DETALLES_FACTURA" EntitySet="DETALLES_FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_farmacia_sucursal" Association="Self.FK_Id_farmacia_sucursal">
+            <End Role="FARMACIA" EntitySet="FARMACIA" />
+            <End Role="SUCURSAL" EntitySet="SUCURSAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_farmacia_trabaja" Association="Self.FK_Id_farmacia_trabaja">
+            <End Role="FARMACIA" EntitySet="FARMACIA" />
+            <End Role="TRABAJA_EN" EntitySet="TRABAJA_EN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_usuario_persona" Association="Self.FK_Id_usuario_persona">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="PERSONA" EntitySet="PERSONA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_producto_DF" Association="Self.FK_Id_producto_DF">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="DETALLES_FACTURA" EntitySet="DETALLES_FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_producto_PS" Association="Self.FK_Id_producto_PS">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="PRODUCTOS_SUCURSAL" EntitySet="PRODUCTOS_SUCURSAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_proveedor_producto" Association="Self.FK_Id_proveedor_producto">
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_sucursal_PS" Association="Self.FK_Id_sucursal_PS">
+            <End Role="SUCURSAL" EntitySet="SUCURSAL" />
+            <End Role="PRODUCTOS_SUCURSAL" EntitySet="PRODUCTOS_SUCURSAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Id_usuario_trabaja" Association="Self.FK_Id_usuario_trabaja">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="TRABAJA_EN" EntitySet="TRABAJA_EN" />
+          </AssociationSet>
+          <AssociationSet Name="TIPO_USUARIO" Association="Self.TIPO_USUARIO">
+            <End Role="RANGO_USUARIO" EntitySet="RANGO_USUARIO" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="POS_PFModelStoreContainer" CdmEntityContainer="POS_PFEntities">
+          <EntitySetMapping Name="CAJA">
+            <EntityTypeMapping TypeName="POS_PFModel.CAJA">
+              <MappingFragment StoreEntitySet="CAJA">
+                <ScalarProperty Name="Id_caja" ColumnName="Id_caja" />
+                <ScalarProperty Name="Id_sucursal_caja" ColumnName="Id_sucursal_caja" />
+                <ScalarProperty Name="Nombre_caja" ColumnName="Nombre_caja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAJEROS">
+            <EntityTypeMapping TypeName="POS_PFModel.CAJEROS">
+              <MappingFragment StoreEntitySet="CAJEROS">
+                <ScalarProperty Name="Id_sesion_caja" ColumnName="Id_sesion_caja" />
+                <ScalarProperty Name="Id_caja_cajeros" ColumnName="Id_caja_cajeros" />
+                <ScalarProperty Name="Id_cajero" ColumnName="Id_cajero" />
+                <ScalarProperty Name="Fecha_apertura" ColumnName="Fecha_apertura" />
+                <ScalarProperty Name="Cantidad_apertura" ColumnName="Cantidad_apertura" />
+                <ScalarProperty Name="Fecha_clausura" ColumnName="Fecha_clausura" />
+                <ScalarProperty Name="Cantidad_clausura" ColumnName="Cantidad_clausura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FACTURA">
+            <EntityTypeMapping TypeName="POS_PFModel.FACTURA">
+              <MappingFragment StoreEntitySet="FACTURA">
+                <ScalarProperty Name="Id_factura" ColumnName="Id_factura" />
+                <ScalarProperty Name="Id_sesion_caja_factura" ColumnName="Id_sesion_caja_factura" />
+                <ScalarProperty Name="Cedula_cliente" ColumnName="Cedula_cliente" />
+                <ScalarProperty Name="Fecha_factura" ColumnName="Fecha_factura" />
+                <ScalarProperty Name="Hora_apertura" ColumnName="Hora_apertura" />
+                <ScalarProperty Name="Hora_clausura" ColumnName="Hora_clausura" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FARMACIA">
+            <EntityTypeMapping TypeName="POS_PFModel.FARMACIA">
+              <MappingFragment StoreEntitySet="FARMACIA">
+                <ScalarProperty Name="Id_farmacia" ColumnName="Id_farmacia" />
+                <ScalarProperty Name="Nombre_farmacia" ColumnName="Nombre_farmacia" />
+                <ScalarProperty Name="Correo_electronico" ColumnName="Correo_electronico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERSONA">
+            <EntityTypeMapping TypeName="POS_PFModel.PERSONA">
+              <MappingFragment StoreEntitySet="PERSONA">
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Id_usuario_persona" ColumnName="Id_usuario_persona" />
+                <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+                <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+                <ScalarProperty Name="Nombre_persona" ColumnName="Nombre_persona" />
+                <ScalarProperty Name="Fecha_nacimiento" ColumnName="Fecha_nacimiento" />
+                <ScalarProperty Name="Telefono_persona" ColumnName="Telefono_persona" />
+                <ScalarProperty Name="Direccion_persona" ColumnName="Direccion_persona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTO">
+            <EntityTypeMapping TypeName="POS_PFModel.PRODUCTO">
+              <MappingFragment StoreEntitySet="PRODUCTO">
+                <ScalarProperty Name="Id_producto" ColumnName="Id_producto" />
+                <ScalarProperty Name="Nombre_producto" ColumnName="Nombre_producto" />
+                <ScalarProperty Name="Id_proveedor_producto" ColumnName="Id_proveedor_producto" />
+                <ScalarProperty Name="EAN" ColumnName="EAN" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVEEDOR">
+            <EntityTypeMapping TypeName="POS_PFModel.PROVEEDOR">
+              <MappingFragment StoreEntitySet="PROVEEDOR">
+                <ScalarProperty Name="Id_proveedor" ColumnName="Id_proveedor" />
+                <ScalarProperty Name="Nombre_proveedor" ColumnName="Nombre_proveedor" />
+                <ScalarProperty Name="Telefono_proveedor" ColumnName="Telefono_proveedor" />
+                <ScalarProperty Name="Direccion_proveedor" ColumnName="Direccion_proveedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RANGO_USUARIO">
+            <EntityTypeMapping TypeName="POS_PFModel.RANGO_USUARIO">
+              <MappingFragment StoreEntitySet="RANGO_USUARIO">
+                <ScalarProperty Name="Id_rango" ColumnName="Id_rango" />
+                <ScalarProperty Name="Nombre_rango" ColumnName="Nombre_rango" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUCURSAL">
+            <EntityTypeMapping TypeName="POS_PFModel.SUCURSAL">
+              <MappingFragment StoreEntitySet="SUCURSAL">
+                <ScalarProperty Name="Id_sucursal" ColumnName="Id_sucursal" />
+                <ScalarProperty Name="Id_farmacia_sucursal" ColumnName="Id_farmacia_sucursal" />
+                <ScalarProperty Name="Nombre_sucursal" ColumnName="Nombre_sucursal" />
+                <ScalarProperty Name="Telefono_sucursal" ColumnName="Telefono_sucursal" />
+                <ScalarProperty Name="Direccion_sucursal" ColumnName="Direccion_sucursal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="POS_PFModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="Id_usuario" ColumnName="Id_usuario" />
+                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETALLES_FACTURA">
+            <EntityTypeMapping TypeName="POS_PFModel.DETALLES_FACTURA">
+              <MappingFragment StoreEntitySet="DETALLES_FACTURA">
+                <ScalarProperty Name="Id_factura_DF" ColumnName="Id_factura_DF" />
+                <ScalarProperty Name="Id_detalle_DF" ColumnName="Id_detalle_DF" />
+                <ScalarProperty Name="Id_producto_DF" ColumnName="Id_producto_DF" />
+                <ScalarProperty Name="Cantidad_compra" ColumnName="Cantidad_compra" />
+                <ScalarProperty Name="Precio_factura" ColumnName="Precio_factura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTOS_SUCURSAL">
+            <EntityTypeMapping TypeName="POS_PFModel.PRODUCTOS_SUCURSAL">
+              <MappingFragment StoreEntitySet="PRODUCTOS_SUCURSAL">
+                <ScalarProperty Name="Id_sucursal_PS" ColumnName="Id_sucursal_PS" />
+                <ScalarProperty Name="Id_producto_PS" ColumnName="Id_producto_PS" />
+                <ScalarProperty Name="Cantidad_bodega" ColumnName="Cantidad_bodega" />
+                <ScalarProperty Name="Cantidad_promedio" ColumnName="Cantidad_promedio" />
+                <ScalarProperty Name="Precio_sucursal" ColumnName="Precio_sucursal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRABAJA_EN">
+            <EntityTypeMapping TypeName="POS_PFModel.TRABAJA_EN">
+              <MappingFragment StoreEntitySet="TRABAJA_EN">
+                <ScalarProperty Name="Id_usuario_trabaja" ColumnName="Id_usuario_trabaja" />
+                <ScalarProperty Name="Id_farmacia_trabaja" ColumnName="Id_farmacia_trabaja" />
+                <ScalarProperty Name="Salario" ColumnName="Salario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="TIPO_USUARIO" TypeName="POS_PFModel.TIPO_USUARIO" StoreEntitySet="TIPO_USUARIO">
+            <EndProperty Name="RANGO_USUARIO">
+              <ScalarProperty Name="Id_rango" ColumnName="Id_rango_TU" />
+            </EndProperty>
+            <EndProperty Name="USUARIO">
+              <ScalarProperty Name="Id_usuario" ColumnName="Id_usuario_TU" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
