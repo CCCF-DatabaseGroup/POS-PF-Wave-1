@@ -1,10 +1,13 @@
-﻿angular.module('myApp', ['ngAnimate','ngMaterial', 'ngMessages'])
+﻿
 
-.controller('ctrl', function ($scope, $http, $mdDialog, $mdMedia) {
+myApp = angular.module('myApp', ['ngAnimate', 'ngMaterial', 'ngMessages']);
+
+myApp.controller('ctrl', function ($scope, $http, $mdDialog, $mdMedia) {
     $scope.showSucursals = function () {
         console.log('sucursals is called');
-        $http.get('/Administrador/READSucursales')
-        .success(function (result) {
+        $http.get('/Administrador/READSucursales/')
+        .success(function (result, status) {
+            console.log(status);
             console.log(result);
             $scope.sucursals = result;
         })
@@ -12,6 +15,21 @@
             console.log(data);
         });
         
+    }
+
+
+    $scope.showUsers = function () {
+        console.log('sucursals is called');
+        $http.get('/Administrador/READCajeros/')
+        .success(function (result, status) {
+            console.log(status);
+            console.log(result);
+            $scope.users = result;
+        })
+        .error(function (data) {
+            console.log(data);
+        });
+
     }
 
 

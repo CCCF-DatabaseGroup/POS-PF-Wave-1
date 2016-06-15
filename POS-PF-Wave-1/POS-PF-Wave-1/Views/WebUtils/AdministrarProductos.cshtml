@@ -6,45 +6,46 @@
 <h2>Administrar Productos</h2>
 
 
-<form>
+<form name="administrarProductos" ng-controller="AdministratorController">
     <h3>Datos del Producto</h3>
     <div class="auxiliar_component center-block">
         <div class="form-inline">
             <label for="CodigoProducto">Codigo del producto: </label>
-            <input id="CodigoProducto" placeholder="Codigo del producto" class="form-control" type="text" />
-            <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+            <input ng-model="product.Id_producto" id="CodigoProducto" placeholder="Codigo del producto" class="form-control" type="number" min="1" value="1" />
+            <button ng-click="findProduct()" class="btn btn-success" type="submit"><span class="glyphicon glyphicon-search"></span></button>
         </div>
     </div>
 
     <div class="auxiliar_component center-block">
             <label for="NombreProducto">Nombre del producto: </label>
-            <input id="NombreProducto" placeholder="Nombre del producto" class="form-control" type="text" />
+            <input ng-required="true" ng-model="product.Nombre_producto" id="NombreProducto" placeholder="Nombre del producto" class="form-control" type="text" />
     </div>
 
     <div class="auxiliar_component center-block">
         <label for="Proovedor">Proovedor: </label>
-        <select id="Proovedor" class="form-control"></select>
+        <select ng-required="true" ng-init="getProviders()" ng-model="providerSelected" ng-options="provider.Nombre_proveedor for provider in providers"  id="Proovedor" class="form-control">
+        </select>
     </div>
     <div class="auxiliar_component center-block">
         <label for="Ean">Codigo de Barras (Ean): </label>
-        <input id="Ean" placeholder="Ean" class="form-control" type="number" min="1"/>
+        <input ng-required="true" ng-model="product.EAN" id="Ean" placeholder="Ean" class="form-control" type="number" min="1"/>
     </div>
 
     <div class="auxiliar_component center-block">
         <label for="DescripcionProducto">Descripcion del producto: </label>
-        <input id="DescripcionProducto" placeholder="Descripcion del producto" class="form-control" type="text" />
+        <input ng-model="product.Descripcion" id="DescripcionProducto" placeholder="Descripcion del producto" class="form-control" type="text" />
     </div>
 
     <br />
     <div class="auxiliar_component center-block">
         <div class="botones_administrador center-block">
-            <button class="btn btn-success boton" type="submit">
+            <button ng-click="cleanProduct()" class="btn btn-success boton" type="button">
                 <span class="glyphicon glyphicon-erase"></span> Limpiar Busqueda
             </button>
-            <button class="btn btn-primary boton" type="submit">
+            <button ng-click="$valid.administrarProductos && updateProduct()" class="btn btn-primary boton" type="submit">
                 <span class="glyphicon glyphicon-cloud-upload"></span> Actualizar Empleado
             </button>
-            <button class="btn btn-danger boton" type="submit">
+            <button ng-click="$valid.administrarProductos" class="btn btn-danger boton" type="submit">
                 <span class="glyphicon glyphicon-remove"></span> Eliminar Empleado
             </button>
         </div>

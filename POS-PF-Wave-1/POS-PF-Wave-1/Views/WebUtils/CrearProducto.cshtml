@@ -10,27 +10,23 @@
     <h3>Datos del Producto</h3>
 
     <div class="auxiliar_component center-block">
-            <label for="NombreProducto">Nombre del producto: </label>
-            <input id="NombreProducto" placeholder="Nombre del producto" class="form-control" type="text" />
+        <label for="NombreProducto">Nombre del producto: </label>
+        <input ng-model="product.Nombre_producto" id="NombreProducto" placeholder="Nombre del producto" class="form-control" type="text" />
     </div>
 
     <div class="auxiliar_component center-block">
         <label for="Proovedor">Proovedor: </label>
-        <select id="Proovedor" class="form-control">
-             
-        </select>
+        <select ng-model="product.Id_proveedor_producto" id="Proovedor" class="form-control"></select>
     </div>
     <div class="auxiliar_component center-block">
         <label for="Ean">Codigo de Barras (Ean): </label>
-        <input id="Ean" placeholder="Ean" class="form-control" type="number" />
+        <input ng-model="product.EAN" id="Ean" placeholder="Ean" class="form-control" type="number" min="1" />
     </div>
 
     <div class="auxiliar_component center-block">
-            <label for="DescripcionProducto">Descripcion del producto: </label>
-            <input id="DescripcionProducto" placeholder="Descripcion del producto" class="form-control" type="text" />
+        <label for="DescripcionProducto">Descripcion del producto: </label>
+        <input ng-model="product.Descripcion" id="DescripcionProducto" placeholder="Descripcion del producto" class="form-control" type="text" />
     </div>
-
-    <br />
 
     <button class="btn btn-success center-block" type="submit">
         <span class="glyphicon glyphicon-check"></span> Crear Producto
