@@ -640,6 +640,20 @@ a.list-group-item.active, a.list-group-item.active:hover{
 
 }
 
+.selectable-box.jumbotron.well>div.description{
+    text-align:center;
+    margin-left:-140px;
+    height:0px;
+    opacity:0;
+    transition: height linear 0.2s,opacity linear 0.2s,margin-left linear 0.4s;
+}
+
+.selectable-box.jumbotron.well:hover>div.description{
+    height:40px;
+    opacity:1;
+    margin-left:0px;
+}
+
 .selectable-box.jumbotron.well:hover{
 
 	background-color: #519351;

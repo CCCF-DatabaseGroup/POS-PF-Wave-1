@@ -1,5 +1,22 @@
-﻿@RenderPage("~/Views/WebUtils/CrearProducto.cshtml")
+﻿
+@{
+    ViewBag.Title = "Administrar Productos";
+}
 
-@RenderPage("~/Views/WebUtils/AdministrarProductos.cshtml")
 
-@RenderPage("~/Views/WebUtils/AbastecerSucursal.cshtml")
+<div class="container body-content">
+    <a class="btn btn-danger" href="/Administrador"><span class="glyphicon glyphicon-circle-arrow-left"></span> Atras</a>
+    @RenderPage("~/Views/WebUtils/CrearProducto.cshtml")
+</div>
+    <hr style="background:#4cff00" />
+<div class="container body-content">
+    @RenderPage("~/Views/WebUtils/AdministrarProductos.cshtml")
+</div>
+<hr style="background:#4cff00" />
+<div class="container body-content">
+    @RenderPage("~/Views/WebUtils/AbastecerSucursal.cshtml")
+    <br /><br /><br /><br /><br />
+</div>
+
+
+

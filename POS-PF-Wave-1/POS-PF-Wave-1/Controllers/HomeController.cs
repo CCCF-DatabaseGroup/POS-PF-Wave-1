@@ -14,5 +14,11 @@ namespace POS_PF_Wave_1.Controllers
 
             return View();
         }
+
+        public JsonResult Login()
+        {
+            return Json(null, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

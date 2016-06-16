@@ -1,3 +1,10 @@
-﻿@RenderPage("~/Views/WebUtils/CrearSucursal.cshtml")
-@RenderPage("~/Views/WebUtils/ManejoSucursal.cshtml")
+﻿<div class="container body-content">
+    <a class="btn btn-danger" href="/Administrador"><span class="glyphicon glyphicon-circle-arrow-left"></span> Atras</a>
 
+    @RenderPage("~/Views/WebUtils/CrearSucursal.cshtml")
+</div>
+    <hr />
+
+<div class="container body-content">
+    @RenderPage("~/Views/WebUtils/ManejoSucursal.cshtml")
+</div>
