@@ -256,6 +256,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="loginUsuario_Result.cs">
+      <DependentUpon>Procs.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -277,6 +280,21 @@
     <Compile Include="PERSONA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Procs.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Procs.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Procs.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Procs.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Procs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Procs.edmx</DependentUpon>
+    </Compile>
     <Compile Include="PRODUCTO.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -292,6 +310,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Procs.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>Procs.tt</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="SUCURSAL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -316,8 +340,13 @@
     <Content Include="Content\nv.d3.css" />
     <Content Include="Content\nv.d3.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="faviconpos.ico" />
     <Content Include="Global.asax" />
     <Content Include="icons\basket_shopping.png" />
+    <Content Include="icons\client.png" />
+    <Content Include="icons\employees.png" />
+    <Content Include="icons\product.png" />
+    <Content Include="icons\sucursal.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -327,6 +356,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Procs.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Procs.edmx</DependentUpon>
+      <LastGenOutput>Procs.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Procs.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Procs.edmx</DependentUpon>
+      <LastGenOutput>Procs.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -426,6 +465,16 @@
     <Content Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Procs.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Procs.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Procs.edmx.diagram">
+      <DependentUpon>Procs.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\A_NAME.pubxml" />
+    <None Include="Properties\PublishProfiles\PosWave.pubxml" />
+    <None Include="Properties\PublishProfiles\POS_WAVE.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
