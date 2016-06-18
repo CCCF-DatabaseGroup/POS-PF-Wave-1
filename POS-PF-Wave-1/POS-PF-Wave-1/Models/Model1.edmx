@@ -171,6 +171,23 @@ advertencia 6002: La tabla o vista 'POS_PF.dbo.bajoInventario' no tiene definida
           <Property Name="Cantidad_promedio" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'POS_PF.dbo.minutosPromedioCajero' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="minutosPromedioCajero">
+          <Key>
+            <PropertyRef Name="Nombre_persona" />
+            <PropertyRef Name="Apellido1" />
+            <PropertyRef Name="Apellido2" />
+            <PropertyRef Name="Fecha_factura" />
+            <PropertyRef Name="Cantidad_compra" />
+          </Key>
+          <Property Name="Nombre_persona" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Apellido1" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Apellido2" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Fecha_factura" Type="date" Nullable="false" />
+          <Property Name="Cantidad_compra" Type="int" Nullable="false" />
+          <Property Name="minutos_en_atencion" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'POS_PF.dbo.productosMasVendidos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="productosMasVendidos">
           <Key>
@@ -178,6 +195,34 @@ advertencia 6002: La tabla o vista 'POS_PF.dbo.productosMasVendidos' no tiene de
           </Key>
           <Property Name="Nombre_producto" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="cantidad" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'POS_PF.dbo.productosMasVendidosPorCajero' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="productosMasVendidosPorCajero">
+          <Key>
+            <PropertyRef Name="Nombre_persona" />
+            <PropertyRef Name="Apellido1" />
+            <PropertyRef Name="Apellido2" />
+          </Key>
+          <Property Name="Nombre_persona" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Apellido1" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Apellido2" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="cantidad_productos" Type="int" />
+          <Property Name="cantidad_unidades" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'POS_PF.dbo.tiempoPromedioCajero' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="tiempoPromedioCajero">
+          <Key>
+            <PropertyRef Name="Nombre_persona" />
+            <PropertyRef Name="Apellido1" />
+            <PropertyRef Name="Apellido2" />
+          </Key>
+          <Property Name="Nombre_persona" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Apellido1" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Apellido2" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="minutos_por_factura" Type="int" />
+          <Property Name="cantidad_unidades" Type="int" />
         </EntityType>
         <Association Name="FK_Cedula_cliente">
           <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="1" />
@@ -472,11 +517,39 @@ advertencia 6002: La tabla o vista 'POS_PF.dbo.productosMasVendidos' no tiene de
     [bajoInventario].[Cantidad_promedio] AS [Cantidad_promedio]
     FROM [dbo].[bajoInventario] AS [bajoInventario]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="minutosPromedioCajero" EntityType="Self.minutosPromedioCajero" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [minutosPromedioCajero].[Nombre_persona] AS [Nombre_persona], 
+    [minutosPromedioCajero].[Apellido1] AS [Apellido1], 
+    [minutosPromedioCajero].[Apellido2] AS [Apellido2], 
+    [minutosPromedioCajero].[Fecha_factura] AS [Fecha_factura], 
+    [minutosPromedioCajero].[Cantidad_compra] AS [Cantidad_compra], 
+    [minutosPromedioCajero].[minutos_en_atencion] AS [minutos_en_atencion]
+    FROM [dbo].[minutosPromedioCajero] AS [minutosPromedioCajero]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="productosMasVendidos" EntityType="Self.productosMasVendidos" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [productosMasVendidos].[Nombre_producto] AS [Nombre_producto], 
     [productosMasVendidos].[cantidad] AS [cantidad]
     FROM [dbo].[productosMasVendidos] AS [productosMasVendidos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="productosMasVendidosPorCajero" EntityType="Self.productosMasVendidosPorCajero" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [productosMasVendidosPorCajero].[Nombre_persona] AS [Nombre_persona], 
+    [productosMasVendidosPorCajero].[Apellido1] AS [Apellido1], 
+    [productosMasVendidosPorCajero].[Apellido2] AS [Apellido2], 
+    [productosMasVendidosPorCajero].[cantidad_productos] AS [cantidad_productos], 
+    [productosMasVendidosPorCajero].[cantidad_unidades] AS [cantidad_unidades]
+    FROM [dbo].[productosMasVendidosPorCajero] AS [productosMasVendidosPorCajero]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tiempoPromedioCajero" EntityType="Self.tiempoPromedioCajero" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tiempoPromedioCajero].[Nombre_persona] AS [Nombre_persona], 
+    [tiempoPromedioCajero].[Apellido1] AS [Apellido1], 
+    [tiempoPromedioCajero].[Apellido2] AS [Apellido2], 
+    [tiempoPromedioCajero].[minutos_por_factura] AS [minutos_por_factura], 
+    [tiempoPromedioCajero].[cantidad_unidades] AS [cantidad_unidades]
+    FROM [dbo].[tiempoPromedioCajero] AS [tiempoPromedioCajero]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Cedula_cliente" Association="Self.FK_Cedula_cliente">
             <End Role="PERSONA" EntitySet="PERSONA" />
@@ -725,12 +798,51 @@ advertencia 6002: La tabla o vista 'POS_PF.dbo.productosMasVendidos' no tiene de
           <Property Name="Cantidad_bodega" Type="Int32" Nullable="false" />
           <Property Name="Cantidad_promedio" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="minutosPromedioCajero">
+          <Key>
+            <PropertyRef Name="Nombre_persona" />
+            <PropertyRef Name="Apellido1" />
+            <PropertyRef Name="Apellido2" />
+            <PropertyRef Name="Fecha_factura" />
+            <PropertyRef Name="Cantidad_compra" />
+          </Key>
+          <Property Name="Nombre_persona" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_factura" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cantidad_compra" Type="Int32" Nullable="false" />
+          <Property Name="minutos_en_atencion" Type="Int32" />
+        </EntityType>
         <EntityType Name="productosMasVendidos">
           <Key>
             <PropertyRef Name="Nombre_producto" />
           </Key>
           <Property Name="Nombre_producto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cantidad" Type="Int32" />
+        </EntityType>
+        <EntityType Name="productosMasVendidosPorCajero">
+          <Key>
+            <PropertyRef Name="Nombre_persona" />
+            <PropertyRef Name="Apellido1" />
+            <PropertyRef Name="Apellido2" />
+          </Key>
+          <Property Name="Nombre_persona" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cantidad_productos" Type="Int32" />
+          <Property Name="cantidad_unidades" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tiempoPromedioCajero">
+          <Key>
+            <PropertyRef Name="Nombre_persona" />
+            <PropertyRef Name="Apellido1" />
+            <PropertyRef Name="Apellido2" />
+          </Key>
+          <Property Name="Nombre_persona" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="minutos_por_factura" Type="Int32" />
+          <Property Name="cantidad_unidades" Type="Int32" />
         </EntityType>
         <Association Name="FK_Id_caja_cajeros">
           <End Role="CAJA" Type="Self.CAJA" Multiplicity="1" />
@@ -919,7 +1031,10 @@ advertencia 6002: La tabla o vista 'POS_PF.dbo.productosMasVendidos' no tiene de
           <EntitySet Name="PRODUCTOS_SUCURSAL" EntityType="Self.PRODUCTOS_SUCURSAL" />
           <EntitySet Name="TRABAJA_EN" EntityType="Self.TRABAJA_EN" />
           <EntitySet Name="bajoInventario" EntityType="Self.bajoInventario" />
+          <EntitySet Name="minutosPromedioCajero" EntityType="Self.minutosPromedioCajero" />
           <EntitySet Name="productosMasVendidos" EntityType="Self.productosMasVendidos" />
+          <EntitySet Name="productosMasVendidosPorCajero" EntityType="Self.productosMasVendidosPorCajero" />
+          <EntitySet Name="tiempoPromedioCajero" EntityType="Self.tiempoPromedioCajero" />
           <AssociationSet Name="FK_Id_caja_cajeros" Association="Self.FK_Id_caja_cajeros">
             <End Role="CAJA" EntitySet="CAJA" />
             <End Role="CAJEROS" EntitySet="CAJEROS" />
@@ -1198,11 +1313,45 @@ advertencia 6002: La tabla o vista 'POS_PF.dbo.productosMasVendidos' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="minutosPromedioCajero">
+            <EntityTypeMapping TypeName="POS_PFModel.minutosPromedioCajero">
+              <MappingFragment StoreEntitySet="minutosPromedioCajero">
+                <ScalarProperty Name="Nombre_persona" ColumnName="Nombre_persona" />
+                <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+                <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+                <ScalarProperty Name="Fecha_factura" ColumnName="Fecha_factura" />
+                <ScalarProperty Name="Cantidad_compra" ColumnName="Cantidad_compra" />
+                <ScalarProperty Name="minutos_en_atencion" ColumnName="minutos_en_atencion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="productosMasVendidos">
             <EntityTypeMapping TypeName="POS_PFModel.productosMasVendidos">
               <MappingFragment StoreEntitySet="productosMasVendidos">
                 <ScalarProperty Name="Nombre_producto" ColumnName="Nombre_producto" />
                 <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productosMasVendidosPorCajero">
+            <EntityTypeMapping TypeName="POS_PFModel.productosMasVendidosPorCajero">
+              <MappingFragment StoreEntitySet="productosMasVendidosPorCajero">
+                <ScalarProperty Name="Nombre_persona" ColumnName="Nombre_persona" />
+                <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+                <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+                <ScalarProperty Name="cantidad_productos" ColumnName="cantidad_productos" />
+                <ScalarProperty Name="cantidad_unidades" ColumnName="cantidad_unidades" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tiempoPromedioCajero">
+            <EntityTypeMapping TypeName="POS_PFModel.tiempoPromedioCajero">
+              <MappingFragment StoreEntitySet="tiempoPromedioCajero">
+                <ScalarProperty Name="Nombre_persona" ColumnName="Nombre_persona" />
+                <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+                <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+                <ScalarProperty Name="minutos_por_factura" ColumnName="minutos_por_factura" />
+                <ScalarProperty Name="cantidad_unidades" ColumnName="cantidad_unidades" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

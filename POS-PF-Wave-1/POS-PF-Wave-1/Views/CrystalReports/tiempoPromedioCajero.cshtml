@@ -8,16 +8,16 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>MayorVentaPorCajero</title>
+    <title>tiempoPromedioCajero</title>
 </head>
 <body>
-    <h3>Lista de Mayores Ventas</h3>
+    <h3>Promedio de Cajeros</h3>
     <table class="table table-bordered" cellpadding="2" cellspacing="2" border="1">
         <tr class="info">
             <th>Nombre_persona</th>
             <th>Apellido1</th>
             <th>Apellido2</th>
-            <th>cantidad_productos</th>
+            <th>minutos_por_factura</th>
             <th>cantidad_unidades</th>
 
         </tr>
@@ -26,14 +26,13 @@
             {
             <tr>
                 <td>@p.Nombre_persona</td>
-                <td>@p.Apellido</td>
-                <td>@p.Apellido</td>
-                <th>@p.cantidad_productos</th>
-                <th>@p.cantidad_unidades</th>
+                <td>@p.Apellido1</td>
+                <td>@p.Apellido2</td>
+                <td>@p.minutos_por_factura</td>
+                <td>@p.cantidad_unidades</td>
             </tr>
         }
 
-    </table>
-
+    </table>  
 </body>
 </html>

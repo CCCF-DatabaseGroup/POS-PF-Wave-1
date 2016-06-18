@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetBajoInventario" targetNamespace="http://tempuri.org/DataSetBajoInventario.xsd" xmlns:mstns="http://tempuri.org/DataSetBajoInventario.xsd" xmlns="http://tempuri.org/DataSetBajoInventario.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetBajoInventario" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetBajoInventario" msprop:Generator_UserDSName="DataSetBajoInventario">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="bajoInventario" msprop:Generator_TableClassName="bajoInventarioDataTable" msprop:Generator_TableVarName="tablebajoInventario" msprop:Generator_TablePropName="bajoInventario" msprop:Generator_RowDeletingName="bajoInventarioRowDeleting" msprop:Generator_RowChangingName="bajoInventarioRowChanging" msprop:Generator_RowEvHandlerName="bajoInventarioRowChangeEventHandler" msprop:Generator_RowDeletedName="bajoInventarioRowDeleted" msprop:Generator_UserTableName="bajoInventario" msprop:Generator_RowChangedName="bajoInventarioRowChanged" msprop:Generator_RowEvArgName="bajoInventarioRowChangeEvent" msprop:Generator_RowClassName="bajoInventarioRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Nombre_Sucursal" msprop:Generator_ColumnVarNameInTable="columnNombre_Sucursal" msprop:Generator_ColumnPropNameInRow="Nombre_Sucursal" msprop:Generator_ColumnPropNameInTable="Nombre_SucursalColumn" msprop:Generator_UserColumnName="Nombre_Sucursal" type="xs:string" minOccurs="0" />
+              <xs:element name="Nombre_producto" msprop:Generator_ColumnVarNameInTable="columnNombre_producto" msprop:Generator_ColumnPropNameInRow="Nombre_producto" msprop:Generator_ColumnPropNameInTable="Nombre_productoColumn" msprop:Generator_UserColumnName="Nombre_producto" type="xs:string" minOccurs="0" />
+              <xs:element name="Cantidad_bodega" msprop:Generator_ColumnVarNameInTable="columnCantidad_bodega" msprop:Generator_ColumnPropNameInRow="Cantidad_bodega" msprop:Generator_ColumnPropNameInTable="Cantidad_bodegaColumn" msprop:Generator_UserColumnName="Cantidad_bodega" type="xs:int" minOccurs="0" />
+              <xs:element name="Cantidad_producto" msprop:Generator_ColumnVarNameInTable="columnCantidad_producto" msprop:Generator_ColumnPropNameInRow="Cantidad_producto" msprop:Generator_ColumnPropNameInTable="Cantidad_productoColumn" msprop:Generator_UserColumnName="Cantidad_producto" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

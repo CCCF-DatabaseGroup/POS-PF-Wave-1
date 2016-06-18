@@ -19,41 +19,23 @@ namespace POS_PF_Wave_1.Controllers
 
             return View();
         }
-        public ActionResult MayorVentaPorSurcursal()
-        {
-            return View();
-        }
+      
         public ActionResult MayorVentaPorCajero()
         {
+            ViewBag.ListProducts = mde.productosMasVendidosPorCajero.ToList();
             return View();
         }
         public ActionResult BajoInventario()
         {
+            ViewBag.ListProducts = mde.bajoInventario.ToList();
             return View();
         }
-        public ActionResult Export()
+        public ActionResult tiempoPromedioCajero()
         {
-       
-
-            ReportDocument rd = new ReportDocument();
-            rd.Load(Path.Combine(Server.MapPath("~/Reports"), "CrystalReportProducts.rpt"));
-            rd.SetDataSource(mde.productosMasVendidos.ToList());
-            
-            Response.Buffer = false;
-            Response.ClearContent();
-            Response.ClearHeaders();
-          
-            try
-            {
-                Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
-                stream.Seek(0, SeekOrigin.Begin);
-                return File(stream, "application/pdf", "ListaDeProductosMasVendidos.pdf");
-
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            ViewBag.ListProducts = mde.tiempoPromedioCajero.ToList();
+            return View();
         }
+      
+        
     }
 }

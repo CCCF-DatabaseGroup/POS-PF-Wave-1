@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetPromedioCajero" targetNamespace="http://tempuri.org/DataSetPromedioCajero.xsd" xmlns:mstns="http://tempuri.org/DataSetPromedioCajero.xsd" xmlns="http://tempuri.org/DataSetPromedioCajero.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetPromedioCajero" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetPromedioCajero" msprop:Generator_UserDSName="DataSetPromedioCajero">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tiempoPromedioCajero" msprop:Generator_TableClassName="tiempoPromedioCajeroDataTable" msprop:Generator_TableVarName="tabletiempoPromedioCajero" msprop:Generator_TablePropName="tiempoPromedioCajero" msprop:Generator_RowDeletingName="tiempoPromedioCajeroRowDeleting" msprop:Generator_RowChangingName="tiempoPromedioCajeroRowChanging" msprop:Generator_RowEvHandlerName="tiempoPromedioCajeroRowChangeEventHandler" msprop:Generator_RowDeletedName="tiempoPromedioCajeroRowDeleted" msprop:Generator_UserTableName="tiempoPromedioCajero" msprop:Generator_RowChangedName="tiempoPromedioCajeroRowChanged" msprop:Generator_RowEvArgName="tiempoPromedioCajeroRowChangeEvent" msprop:Generator_RowClassName="tiempoPromedioCajeroRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Nombre_persona" msprop:Generator_ColumnVarNameInTable="columnNombre_persona" msprop:Generator_ColumnPropNameInRow="Nombre_persona" msprop:Generator_ColumnPropNameInTable="Nombre_personaColumn" msprop:Generator_UserColumnName="Nombre_persona" type="xs:string" minOccurs="0" />
+              <xs:element name="Apellido1" msprop:Generator_ColumnVarNameInTable="columnApellido1" msprop:Generator_ColumnPropNameInRow="Apellido1" msprop:Generator_ColumnPropNameInTable="Apellido1Column" msprop:Generator_UserColumnName="Apellido1" type="xs:string" minOccurs="0" />
+              <xs:element name="Apellido2" msprop:Generator_ColumnVarNameInTable="columnApellido2" msprop:Generator_ColumnPropNameInRow="Apellido2" msprop:Generator_ColumnPropNameInTable="Apellido2Column" msprop:Generator_UserColumnName="Apellido2" type="xs:string" minOccurs="0" />
+              <xs:element name="minutos_por_factura" msprop:Generator_ColumnVarNameInTable="columnminutos_por_factura" msprop:Generator_ColumnPropNameInRow="minutos_por_factura" msprop:Generator_ColumnPropNameInTable="minutos_por_facturaColumn" msprop:Generator_UserColumnName="minutos_por_factura" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="cantidad_unidades" msprop:Generator_ColumnVarNameInTable="columncantidad_unidades" msprop:Generator_ColumnPropNameInRow="cantidad_unidades" msprop:Generator_ColumnPropNameInTable="cantidad_unidadesColumn" msprop:Generator_UserColumnName="cantidad_unidades" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

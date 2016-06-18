@@ -11,7 +11,29 @@
     <title>BajoInventario</title>
 </head>
 <body>
-    <div> 
-    </div>
-</body>
+    
+        <h3>Lista de Productos con bajo Inventario</h3>
+        <table class="table table-bordered" cellpadding="2" cellspacing="2" border="1">
+            <tr class="info">
+                <th>Nombre_sucursal</th>
+                <th>Nombre_producto</th>
+                <th>Cantidad_bodega</th>
+                <th>Cantidad_promedio</th>
+               
+            </tr>
+
+            @foreach (var p in ViewBag.ListProducts)
+            {
+                <tr>
+                    <td>@p.Nombre_sucursal</td>
+                    <td>@p.Nombre_producto</td>
+                    <td>@p.Cantidad_bodega</td>
+                    <td>@p.Cantidad_promedio</td>
+                </tr>
+            }
+
+        </table>
+
+    </body>
+</
 </html>

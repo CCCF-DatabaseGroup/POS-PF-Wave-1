@@ -41,7 +41,10 @@ namespace POS_PF_Wave_1.Models
         public virtual DbSet<PRODUCTOS_SUCURSAL> PRODUCTOS_SUCURSAL { get; set; }
         public virtual DbSet<TRABAJA_EN> TRABAJA_EN { get; set; }
         public virtual DbSet<bajoInventario> bajoInventario { get; set; }
+        public virtual DbSet<minutosPromedioCajero> minutosPromedioCajero { get; set; }
         public virtual DbSet<productosMasVendidos> productosMasVendidos { get; set; }
+        public virtual DbSet<productosMasVendidosPorCajero> productosMasVendidosPorCajero { get; set; }
+        public virtual DbSet<tiempoPromedioCajero> tiempoPromedioCajero { get; set; }
     
         public virtual int abrirCaja(Nullable<int> idCaja, Nullable<int> idCajero, Nullable<int> cantidaApertura, ObjectParameter sesion)
         {
