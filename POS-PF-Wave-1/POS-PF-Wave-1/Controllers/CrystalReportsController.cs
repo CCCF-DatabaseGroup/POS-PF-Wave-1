@@ -20,21 +20,21 @@ namespace POS_PF_Wave_1.Controllers
             return View();
         }
       
-        public ActionResult MayorVentaPorCajero()
-        {
-            ViewBag.ListProducts = mde.productosMasVendidosPorCajero.ToList();
-            return View();
-        }
-        public ActionResult BajoInventario()
-        {
-            ViewBag.ListProducts = mde.bajoInventario.ToList();
-            return View();
-        }
-        public ActionResult tiempoPromedioCajero()
-        {
-            ViewBag.ListProducts = mde.tiempoPromedioCajero.ToList();
-            return View();
-        }
+     //   public ActionResult MayorVentaPorCajero()
+     //   {
+     //       ViewBag.ListProducts = mde.productosMasVendidosPorCajero.ToList();
+        //    return View();
+        //}
+        //public ActionResult BajoInventario()
+        //{
+        //    ViewBag.ListProducts = mde.bajoInventario.ToList();
+        //    return View();
+        //}
+        //public ActionResult tiempoPromedioCajero()
+        //{
+        //    ViewBag.ListProducts = mde.tiempoPromedioCajero.ToList();
+        //    return View();
+        //}
       
         
     }
