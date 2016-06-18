@@ -637,7 +637,7 @@ a.list-group-item.active, a.list-group-item.active:hover{
 
 .selectable-box.jumbotron.well{
 	transition: background-color 0.5s, color 0.5s;
-
+    height: 400px;
 }
 
 .selectable-box.jumbotron.well>div.description{
