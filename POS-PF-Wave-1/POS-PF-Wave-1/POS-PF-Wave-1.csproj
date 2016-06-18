@@ -262,7 +262,7 @@
     <Compile Include="Models\FACTURA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-<<<<<<< HEAD
+
     <Compile Include="Models\FARMACIA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -271,12 +271,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
-=======
-    <Compile Include="loginUsuario_Result.cs">
-      <DependentUpon>Procs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.Context.cs">
->>>>>>> origin/master
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Context.tt</DependentUpon>
@@ -294,26 +288,7 @@
     <Compile Include="Models\PERSONA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Models\PRODUCTO.cs">
-=======
-    <Compile Include="Procs.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Procs.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Procs.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Procs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Procs.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Procs.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="PRODUCTO.cs">
->>>>>>> origin/master
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\productosMasVendidos.cs">
@@ -325,22 +300,10 @@
     <Compile Include="Models\PROVEEDOR.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Models\RANGO_USUARIO.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SUCURSAL.cs">
-=======
-    <Compile Include="Results\ChallengeResult.cs" />
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Procs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>Procs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Startup.cs" />
-    <Compile Include="SUCURSAL.cs">
->>>>>>> origin/master
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TRABAJA_EN.cs">
@@ -381,15 +344,12 @@
     <Content Include="faviconpos.ico" />
     <Content Include="Global.asax" />
     <Content Include="icons\basket_shopping.png" />
-<<<<<<< HEAD
-    <Content Include="Models\Model1.Context.tt">
-=======
+    <Content Include="Models\Model1.Context.tt"/>
     <Content Include="icons\client.png" />
     <Content Include="icons\employees.png" />
     <Content Include="icons\product.png" />
     <Content Include="icons\sucursal.png" />
     <Content Include="Model1.Context.tt">
->>>>>>> origin/master
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
@@ -507,7 +467,6 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-<<<<<<< HEAD
     <Content Include="Reports\DataSetProducts.xsc">
       <DependentUpon>DataSetProducts.xsd</DependentUpon>
     </Content>
@@ -519,18 +478,6 @@
     <Content Include="Reports\DataSetProducts.xss">
       <DependentUpon>DataSetProducts.xsd</DependentUpon>
     </Content>
-=======
-    <EntityDeploy Include="Procs.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Procs.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Procs.edmx.diagram">
-      <DependentUpon>Procs.edmx</DependentUpon>
-    </Content>
-    <None Include="Properties\PublishProfiles\A_NAME.pubxml" />
-    <None Include="Properties\PublishProfiles\PosWave.pubxml" />
-    <None Include="Properties\PublishProfiles\POS_WAVE.pubxml" />
->>>>>>> origin/master
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />

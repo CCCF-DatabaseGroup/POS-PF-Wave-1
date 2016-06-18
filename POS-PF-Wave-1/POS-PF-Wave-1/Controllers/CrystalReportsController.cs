@@ -38,7 +38,7 @@ namespace POS_PF_Wave_1.Controllers
             ReportDocument rd = new ReportDocument();
             rd.Load(Path.Combine(Server.MapPath("~/Reports"), "CrystalReportProducts.rpt"));
             rd.SetDataSource(mde.productosMasVendidos.ToList());
-
+            
             Response.Buffer = false;
             Response.ClearContent();
             Response.ClearHeaders();
