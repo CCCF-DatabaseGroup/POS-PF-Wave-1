@@ -245,14 +245,71 @@ namespace POS_PF_Wave_1.Controllers
         //=================== Administrar Empleados ============================================================
         //======================================================================================================
 
-        
-        
-        
+
+
+        public JsonResult GetEmployees()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            int[] rolesId = new int [] { 1, 2, 3, 4, 5 };
+            var employees = db.RANGO_USUARIO
+                             .Where(r => rolesId.Contains(r.Id_rango))
+                             .SelectMany(x => x.USUARIO.Select(e => new { e.PERSONA, e.Id_usuario, e.Nickname }))
+                             ;
+
+            return Json(employees.ToList(), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult AddEmployee(USUARIO usuario,PERSONA persona)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            db.PERSONA.Add(persona);
+            db.SaveChanges();
+            return Json(null, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult RemoveEmployee(int IdUsuario)
+        {
+            USUARIO toDelete = db.USUARIO.Find(IdUsuario);
+            if (toDelete != null)
+            {
+                db.Entry(toDelete).State = System.Data.Entity.EntityState.Deleted;
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception e) { }
+
+            }
+            return Json(null, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult UpdateEmployee(PERSONA persona)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var original = db.PERSONA.Find(persona.Id_usuario_persona);
+
+            if (original != null)
+            {
+                db.Entry(original).CurrentValues.SetValues(persona);
+                db.SaveChanges();
+            }
+
+            return Json(null, JsonRequestBehavior.AllowGet);
+        }
 
 
 
 
-        
+
+
+
+
+
+
         [HttpGet]
         /*Se hace la operacion READ SOBRE SUCURSALES*/
         public JsonResult READSucursales()
