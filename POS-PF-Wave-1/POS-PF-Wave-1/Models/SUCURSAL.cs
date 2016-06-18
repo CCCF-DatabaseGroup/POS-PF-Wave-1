@@ -7,30 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace POS_PF_Wave_1
+namespace POS_PF_Wave_1.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class FACTURA
+    public partial class SUCURSAL
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public FACTURA()
+        public SUCURSAL()
         {
-            this.DETALLES_FACTURA = new HashSet<DETALLES_FACTURA>();
+            this.CAJA = new HashSet<CAJA>();
+            this.PRODUCTOS_SUCURSAL = new HashSet<PRODUCTOS_SUCURSAL>();
         }
     
-        public int Id_factura { get; set; }
-        public int Id_sesion_caja_factura { get; set; }
-        public int Cedula_cliente { get; set; }
-        public System.DateTime Fecha_factura { get; set; }
-        public System.TimeSpan Hora_apertura { get; set; }
-        public Nullable<System.TimeSpan> Hora_clausura { get; set; }
-        public string Observaciones { get; set; }
+        public int Id_sucursal { get; set; }
+        public int Id_farmacia_sucursal { get; set; }
+        public string Nombre_sucursal { get; set; }
+        public int Telefono_sucursal { get; set; }
+        public string Direccion_sucursal { get; set; }
     
-        public virtual CAJEROS CAJEROS { get; set; }
-        public virtual PERSONA PERSONA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DETALLES_FACTURA> DETALLES_FACTURA { get; set; }
+        public virtual ICollection<CAJA> CAJA { get; set; }
+        public virtual FARMACIA FARMACIA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PRODUCTOS_SUCURSAL> PRODUCTOS_SUCURSAL { get; set; }
     }
 }

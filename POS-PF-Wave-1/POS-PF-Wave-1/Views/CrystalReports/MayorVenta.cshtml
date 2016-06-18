@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MayorVenta</title>
+</head>
+<body>
+    <h3>Lista de Productos mas vendidos</h3>  
+    <table cellpadding="2" cellspacing="2" border="1" >
+        <tr>
+                <th>Nombre_producto</th>
+                <th>cantidad</th  >
+        </tr>      
+    
+       @foreach(var p in ViewBag.ListProducts)
+       {
+           <tr>
+               <td>@p.Nombre_producto</td>
+               <td>@p.cantidad</td> 
+           </tr>
+       }
+
+    </table>  
+    <br /> <br />
+    <a href="@Url.Action("Export","CrystalReports")">Exportar Reporte </a>
+</body>
+</html>

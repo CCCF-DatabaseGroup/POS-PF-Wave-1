@@ -7,18 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace POS_PF_Wave_1
+namespace POS_PF_Wave_1.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class TRABAJA_EN
+    public partial class loginUsuario_Result
     {
-        public int Id_usuario_trabaja { get; set; }
+        public int Cedula { get; set; }
+        public string Nombre_persona { get; set; }
+        public string Apellido1 { get; set; }
+        public string Apellido2 { get; set; }
+        public Nullable<int> Telefono_persona { get; set; }
+        public Nullable<System.DateTime> Fecha_nacimiento { get; set; }
+        public string Nombre_rango { get; set; }
+        public string Direccion_persona { get; set; }
+        public int Id_rango { get; set; }
         public int Id_farmacia_trabaja { get; set; }
-        public int Salario { get; set; }
-    
-        public virtual FARMACIA FARMACIA { get; set; }
-        public virtual USUARIO USUARIO { get; set; }
     }
 }

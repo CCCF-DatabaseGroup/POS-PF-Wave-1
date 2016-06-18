@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace POS_PF_Wave_1
+namespace POS_PF_Wave_1.Models
 {
     using System;
     using System.Collections.Generic;

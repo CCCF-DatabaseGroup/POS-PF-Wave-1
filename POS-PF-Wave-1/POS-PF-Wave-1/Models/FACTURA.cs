@@ -7,25 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace POS_PF_Wave_1
+namespace POS_PF_Wave_1.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class CAJA
+    public partial class FACTURA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CAJA()
+        public FACTURA()
         {
-            this.CAJEROS = new HashSet<CAJEROS>();
+            this.DETALLES_FACTURA = new HashSet<DETALLES_FACTURA>();
         }
     
-        public int Id_caja { get; set; }
-        public int Id_sucursal_caja { get; set; }
-        public string Nombre_caja { get; set; }
+        public int Id_factura { get; set; }
+        public int Id_sesion_caja_factura { get; set; }
+        public int Cedula_cliente { get; set; }
+        public System.DateTime Fecha_factura { get; set; }
+        public System.TimeSpan Hora_apertura { get; set; }
+        public Nullable<System.TimeSpan> Hora_clausura { get; set; }
+        public string Observaciones { get; set; }
     
+        public virtual CAJEROS CAJEROS { get; set; }
+        public virtual PERSONA PERSONA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CAJEROS> CAJEROS { get; set; }
-        public virtual SUCURSAL SUCURSAL { get; set; }
+        public virtual ICollection<DETALLES_FACTURA> DETALLES_FACTURA { get; set; }
     }
 }

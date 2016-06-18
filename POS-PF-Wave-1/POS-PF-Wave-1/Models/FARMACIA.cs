@@ -7,33 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace POS_PF_Wave_1
+namespace POS_PF_Wave_1.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class USUARIO
+    public partial class FARMACIA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public USUARIO()
+        public FARMACIA()
         {
-            this.CAJEROS = new HashSet<CAJEROS>();
-            this.PERSONA = new HashSet<PERSONA>();
+            this.SUCURSAL = new HashSet<SUCURSAL>();
             this.TRABAJA_EN = new HashSet<TRABAJA_EN>();
-            this.RANGO_USUARIO = new HashSet<RANGO_USUARIO>();
         }
     
-        public int Id_usuario { get; set; }
-        public string Nickname { get; set; }
-        public string Contrasena { get; set; }
+        public int Id_farmacia { get; set; }
+        public string Nombre_farmacia { get; set; }
+        public string Correo_electronico { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CAJEROS> CAJEROS { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PERSONA> PERSONA { get; set; }
+        public virtual ICollection<SUCURSAL> SUCURSAL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TRABAJA_EN> TRABAJA_EN { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RANGO_USUARIO> RANGO_USUARIO { get; set; }
     }
 }

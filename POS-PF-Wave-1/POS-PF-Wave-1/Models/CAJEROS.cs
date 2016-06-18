@@ -7,30 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace POS_PF_Wave_1
+namespace POS_PF_Wave_1.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class PRODUCTO
+    public partial class CAJEROS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PRODUCTO()
+        public CAJEROS()
         {
-            this.DETALLES_FACTURA = new HashSet<DETALLES_FACTURA>();
-            this.PRODUCTOS_SUCURSAL = new HashSet<PRODUCTOS_SUCURSAL>();
+            this.FACTURA = new HashSet<FACTURA>();
         }
     
-        public int Id_producto { get; set; }
-        public string Nombre_producto { get; set; }
-        public int Id_proveedor_producto { get; set; }
-        public string EAN { get; set; }
-        public string Descripcion { get; set; }
+        public int Id_sesion_caja { get; set; }
+        public int Id_caja_cajeros { get; set; }
+        public int Id_cajero { get; set; }
+        public System.DateTime Fecha_apertura { get; set; }
+        public int Cantidad_apertura { get; set; }
+        public Nullable<System.DateTime> Fecha_clausura { get; set; }
+        public Nullable<int> Cantidad_clausura { get; set; }
     
+        public virtual CAJA CAJA { get; set; }
+        public virtual USUARIO USUARIO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DETALLES_FACTURA> DETALLES_FACTURA { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PRODUCTOS_SUCURSAL> PRODUCTOS_SUCURSAL { get; set; }
-        public virtual PROVEEDOR PROVEEDOR { get; set; }
+        public virtual ICollection<FACTURA> FACTURA { get; set; }
     }
 }

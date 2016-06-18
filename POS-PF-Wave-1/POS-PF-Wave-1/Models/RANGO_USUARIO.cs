@@ -7,30 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace POS_PF_Wave_1
+namespace POS_PF_Wave_1.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class SUCURSAL
+    public partial class RANGO_USUARIO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SUCURSAL()
+        public RANGO_USUARIO()
         {
-            this.CAJA = new HashSet<CAJA>();
-            this.PRODUCTOS_SUCURSAL = new HashSet<PRODUCTOS_SUCURSAL>();
+            this.USUARIO = new HashSet<USUARIO>();
         }
     
-        public int Id_sucursal { get; set; }
-        public int Id_farmacia_sucursal { get; set; }
-        public string Nombre_sucursal { get; set; }
-        public int Telefono_sucursal { get; set; }
-        public string Direccion_sucursal { get; set; }
+        public int Id_rango { get; set; }
+        public string Nombre_rango { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CAJA> CAJA { get; set; }
-        public virtual FARMACIA FARMACIA { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PRODUCTOS_SUCURSAL> PRODUCTOS_SUCURSAL { get; set; }
+        public virtual ICollection<USUARIO> USUARIO { get; set; }
     }
 }

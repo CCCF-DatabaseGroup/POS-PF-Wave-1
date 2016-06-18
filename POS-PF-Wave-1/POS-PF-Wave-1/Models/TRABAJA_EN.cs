@@ -7,20 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace POS_PF_Wave_1
+namespace POS_PF_Wave_1.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class DETALLES_FACTURA
+    public partial class TRABAJA_EN
     {
-        public int Id_factura_DF { get; set; }
-        public int Id_detalle_DF { get; set; }
-        public int Id_producto_DF { get; set; }
-        public int Cantidad_compra { get; set; }
-        public decimal Precio_factura { get; set; }
+        public int Id_usuario_trabaja { get; set; }
+        public int Id_farmacia_trabaja { get; set; }
+        public int Salario { get; set; }
     
-        public virtual FACTURA FACTURA { get; set; }
-        public virtual PRODUCTO PRODUCTO { get; set; }
+        public virtual FARMACIA FARMACIA { get; set; }
+        public virtual USUARIO USUARIO { get; set; }
     }
 }

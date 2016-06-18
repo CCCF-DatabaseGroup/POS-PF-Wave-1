@@ -7,27 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace POS_PF_Wave_1
+namespace POS_PF_Wave_1.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class FARMACIA
+    public partial class PRODUCTO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public FARMACIA()
+        public PRODUCTO()
         {
-            this.SUCURSAL = new HashSet<SUCURSAL>();
-            this.TRABAJA_EN = new HashSet<TRABAJA_EN>();
+            this.DETALLES_FACTURA = new HashSet<DETALLES_FACTURA>();
+            this.PRODUCTOS_SUCURSAL = new HashSet<PRODUCTOS_SUCURSAL>();
         }
     
-        public int Id_farmacia { get; set; }
-        public string Nombre_farmacia { get; set; }
-        public string Correo_electronico { get; set; }
+        public int Id_producto { get; set; }
+        public string Nombre_producto { get; set; }
+        public int Id_proveedor_producto { get; set; }
+        public string EAN { get; set; }
+        public string Descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SUCURSAL> SUCURSAL { get; set; }
+        public virtual ICollection<DETALLES_FACTURA> DETALLES_FACTURA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TRABAJA_EN> TRABAJA_EN { get; set; }
+        public virtual ICollection<PRODUCTOS_SUCURSAL> PRODUCTOS_SUCURSAL { get; set; }
+        public virtual PROVEEDOR PROVEEDOR { get; set; }
     }
 }
