@@ -3,24 +3,24 @@
     ViewBag.Title = "Crear Producto";
 }
 
-<h2>Crear Producto</h2>
+<h2 class="text-center">Crear Producto</h2>
 
 
-<form>
-    <h3>Datos del Producto</h3>
+<form name="crearProductos" ng-controller="AdministratorController">
+    <h3 class="text-center">Datos del Producto</h3>
 
     <div class="auxiliar_component center-block">
         <label for="NombreProducto">Nombre del producto: </label>
-        <input ng-model="product.Nombre_producto" id="NombreProducto" placeholder="Nombre del producto" class="form-control" type="text" />
+        <input ng-required="true" ng-model="product.Nombre_producto" id="NombreProducto" placeholder="Nombre del producto" class="form-control" type="text" />
     </div>
 
     <div class="auxiliar_component center-block">
         <label for="Proovedor">Proovedor: </label>
-        <select ng-model="product.Id_proveedor_producto" id="Proovedor" class="form-control"></select>
+        <select ng-required="true" ng-init="getProviders()" ng-model="providerSelected" ng-options="provider.Nombre_proveedor for provider in providers" id="Proovedor" class="form-control"></select>
     </div>
     <div class="auxiliar_component center-block">
         <label for="Ean">Codigo de Barras (Ean): </label>
-        <input ng-model="product.EAN" id="Ean" placeholder="Ean" class="form-control" type="number" min="1" />
+        <input ng-required="true" ng-model="product.EAN" id="Ean" placeholder="Ean" class="form-control" type="number" min="1" />
     </div>
 
     <div class="auxiliar_component center-block">
@@ -28,7 +28,9 @@
         <input ng-model="product.Descripcion" id="DescripcionProducto" placeholder="Descripcion del producto" class="form-control" type="text" />
     </div>
 
-    <button class="btn btn-success center-block" type="submit">
+    <br />
+
+    <button ng-click="crearProductos.$valid && addProduct()" class="btn btn-success center-block" type="submit">
         <span class="glyphicon glyphicon-check"></span> Crear Producto
     </button>
 

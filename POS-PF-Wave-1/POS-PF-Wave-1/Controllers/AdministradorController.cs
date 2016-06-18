@@ -11,6 +11,7 @@ namespace POS_PF_Wave_1.Controllers
     public class AdministradorController : Controller
     {
         private POS_PFEntities db = new POS_PFEntities();
+        private const string CASA_FARMACEUTICA = "farmacia";
         public ActionResult Index()
         {
             ViewBag.Title = "Vista Administrador ";
@@ -63,15 +64,30 @@ namespace POS_PF_Wave_1.Controllers
         }
 
 
+        [HttpPost]
         public JsonResult AddProduct(PRODUCTO product)
         {
             db.Configuration.ProxyCreationEnabled = false;
+            db.PRODUCTO.Add(product);
+            db.SaveChanges();
             return Json(null, JsonRequestBehavior.AllowGet);
         }
 
-
+        [HttpPost]
         public JsonResult RemoveProduct(int id) {
-            db.Configuration.ProxyCreationEnabled = false;
+            //db.Configuration.ProxyCreationEnabled = false;
+            
+            PRODUCTO toDelete = db.PRODUCTO.Find(id);
+            if (toDelete != null)
+            {
+                db.Entry(toDelete).State = System.Data.Entity.EntityState.Deleted;
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch(Exception e){}
+                
+            }
             return Json(null, JsonRequestBehavior.AllowGet);
         }
 
@@ -97,6 +113,74 @@ namespace POS_PF_Wave_1.Controllers
         //=================== Administrar Sucursales ===========================================================
         //======================================================================================================
 
+        public JsonResult GetBranchOffice()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var providers = db.SUCURSAL.ToList();
+
+            return Json(providers, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult FindBranchOffice(int id)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+
+            db.Configuration.ProxyCreationEnabled = false;
+            SUCURSAL myBranchOffice = new SUCURSAL();
+            myBranchOffice.Id_sucursal = id;
+
+            myBranchOffice = db.SUCURSAL.Find(id);
+
+            return Json(myBranchOffice, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult AddBranchOffice(SUCURSAL branchOffice)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            //En esta seccion se selecciona farmatica o phishel
+            //branchOffice.Id_farmacia_sucursal = (int)Session[CASA_FARMACEUTICA];
+            branchOffice.Id_farmacia_sucursal = 1;
+            db.SUCURSAL.Add(branchOffice);
+            db.SaveChanges();
+            return Json(null, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult RemoveBranchOffice(SUCURSAL branchOffice)
+        {
+            SUCURSAL toDelete = db.SUCURSAL.Find(branchOffice.Id_sucursal);
+            if (toDelete != null)
+            {
+                db.Entry(toDelete).State = System.Data.Entity.EntityState.Deleted;
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception e) { }
+
+            }
+            return Json(null, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult UpdateBranchOffice(SUCURSAL branchOffice)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var original = db.SUCURSAL.Find(branchOffice.Id_sucursal);
+
+            if (original != null)
+            {
+                //db.SUCURSAL.Attach(branchOffice);
+                //db.Entry(branchOffice).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(original).CurrentValues.SetValues(branchOffice);
+                db.SaveChanges();
+            }
+
+            return Json(null, JsonRequestBehavior.AllowGet);
+        }
 
 
         //======================================================================================================
@@ -113,30 +197,45 @@ namespace POS_PF_Wave_1.Controllers
             return Json(providers, JsonRequestBehavior.AllowGet);
         }
 
-
-        public JsonResult FindProvider(int id)
+        [HttpPost]
+        public JsonResult AddProvider(PROVEEDOR provider)
         {
             db.Configuration.ProxyCreationEnabled = false;
+            db.PROVEEDOR.Add(provider);
+            db.SaveChanges();
             return Json(null, JsonRequestBehavior.AllowGet);
         }
 
-
-        public JsonResult AddProvider(PRODUCTO product)
+        [HttpPost]
+        public JsonResult RemoveProvider(PROVEEDOR provider)
         {
-            db.Configuration.ProxyCreationEnabled = false;
+            PROVEEDOR toDelete = db.PROVEEDOR.Find(provider.Id_proveedor);
+            if (toDelete != null)
+            {
+                db.Entry(toDelete).State = System.Data.Entity.EntityState.Deleted;
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception e) { }
+
+            }
             return Json(null, JsonRequestBehavior.AllowGet);
         }
 
-
-        public JsonResult RemoveProvider(int id)
+        [HttpPost]
+        public JsonResult UpdateProvider(PROVEEDOR provider)
         {
             db.Configuration.ProxyCreationEnabled = false;
-            return Json(null, JsonRequestBehavior.AllowGet);
-        }
 
-        public JsonResult UpdateProvider(PRODUCTO product)
-        {
-            db.Configuration.ProxyCreationEnabled = false;
+            var original = db.PROVEEDOR.Find(provider.Id_proveedor);
+
+            if (original != null)
+            {
+                db.Entry(original).CurrentValues.SetValues(provider);
+                db.SaveChanges();
+            }
+
             return Json(null, JsonRequestBehavior.AllowGet);
         }
 
@@ -146,9 +245,14 @@ namespace POS_PF_Wave_1.Controllers
         //=================== Administrar Empleados ============================================================
         //======================================================================================================
 
+        
+        
+        
 
 
 
+
+        
         [HttpGet]
         /*Se hace la operacion READ SOBRE SUCURSALES*/
         public JsonResult READSucursales()

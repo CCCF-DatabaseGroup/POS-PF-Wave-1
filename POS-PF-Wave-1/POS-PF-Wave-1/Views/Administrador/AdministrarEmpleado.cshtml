@@ -1,3 +1,14 @@
-﻿@RenderPage("~/Views/WebUtils/ManejoEmpleado.cshtml")
+﻿
+
+@{
+    ViewBag.Title = "Administrador Empleados";
+}
+
+
+
+<div class="container body-content">
+    <a class="btn btn-danger" href="/Administrador"><span class="glyphicon glyphicon-circle-arrow-left"></span> Atras</a>
+</div>
+@RenderPage("~/Views/WebUtils/ManejoEmpleado.cshtml")
 
 @RenderPage("~/Views/WebUtils/CrearEmpleado.cshtml")

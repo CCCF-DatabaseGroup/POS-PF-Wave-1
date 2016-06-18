@@ -3,32 +3,31 @@
     ViewBag.Title = "CrearProovedor";
 }
 
-<h2>Crear Proovedor</h2>
+<h2 class="text-center">Crear Proovedor</h2>
 
 
-<form>
-    <h3>Datos del Proovedor</h3>
+<form name="crearProveedor" ng-controller="AdministratorController">
+    <h3 class="text-center">Datos del Proovedor</h3>
 
     <div class="auxiliar_component center-block">
-        <div class="form-inline">
-            <label for="NombreProovedor">Nombre de proovedor: </label>
-            <input id="NombreProovedor" placeholder="Nombre de proovedor" class="form-control" type="text" />
+        <div class="auxiliar_component">
+            <label for="NombreProovedorE">Nombre del proveedor: </label>
+            <input ng-required="true" ng-model="providerSelected.Nombre_proveedor" placeholder="Nuevo nombre del proovedor" class="form-control" type="text" />
         </div>
-    </div>
-
-    <div class="auxiliar_component center-block">
-        <label for="TelProovedor">Telefono proovedor: </label>
-        <input id="TelProovedor" placeholder="Telefono del proovedor" class="form-control" type="text" />
-    </div>
-    <div class="auxiliar_component center-block">
-        <label for="DireccionProovedor">Direccion del proovedor: </label>
-        <input id="DireccionProovedor" placeholder="Direccion del proovedor" class="form-control" type="text" />
+        <div class="auxiliar_component">
+            <label for="TelProovedor">Telefono proveedor: </label>
+            <input ng-required="true" ng-model="providerSelected.Telefono_proveedor" id="TelProovedor" placeholder="Telefono del proovedor" class="form-control" type="number" />
+        </div>
+        <div class="auxiliar_component">
+            <label for="DireccionProovedor">Direccion del proveedor: </label>
+            <input ng-required="true" ng-model="providerSelected.Direccion_proveedor" id="DireccionProovedor" placeholder="Direccion del proovedor" class="form-control" type="text" />
+        </div>
     </div>
 
     <br />
 
-    <button class="btn btn-success center-block" type="submit">
-        <span class="glyphicon glyphicon-check"></span> Crear Proovedor
+    <button ng-click="crearProveedor.$valid && addProvider()" class="btn btn-success center-block" type="submit">
+        <span class="glyphicon glyphicon-check"></span> Crear Proveedor
     </button>
 
 </form>
